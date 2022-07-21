@@ -366,6 +366,26 @@ class Main extends CI_Controller {
 		}
 	}
 
+	public function users(){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$userID = $this->session->userdata("userID");
+			$this->load->model("UserModel");
+			$this->load->model("ResearchGroup");
+			$data["userID"] = $userID ;
+			$data["info"]= $this->UserModel->getUserInfo($userID);
+			$data["research_groups"]= $this->ResearchGroup->getResearchGroups();
+			$this->load->view('header',$data);
+			$this->load->view('users',$data);
+			$this->load->view('footer');
+			$this->load->view('groups_js',$data);
+		}
+	}
+
 	public function edit_group($groupID=null){
 			if( null === $this->session->userdata("userID")){
 			$this->load->helper('form');

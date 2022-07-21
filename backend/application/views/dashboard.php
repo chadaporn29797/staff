@@ -411,7 +411,7 @@
               <div class="profile_img">
                 <div id="crop-avatar">
                   <!-- Current avatar -->
-                  <a href='<?= site_url('main/edit_picture') ?>'><img class="img-responsive avatar-view" src="<?= base_url("../avatars/" . $info->ubu_mail . ".png") . '?' . rand() ?>" alt="Avatar" title="Change the avatar"></a>
+                  <a href='<?= site_url('main/edit_picture') ?>'><img height="200" width="200" class="img-responsive avatar-view" src="<?= base_url("../avatars/" . $info->ubu_mail . ".png") . '?' . rand() ?>" alt="Avatar" title="Change the avatar"></a>
                 </div>
               </div>
               <h4><?= $info->fullName ?></h4>
@@ -449,10 +449,10 @@
 </div>
 -->
               <p>
-                แสดงหัวข้อภาษา <label for="english_title">English</label>
-                <input id="english_title" type="radio" name="iCheck" <?= $info->language == "en" ? "checked" : ""  ?>>
-                <label for="thai_title">ภาษาไทย</label>
-                <input id="thai_title" type="radio" name="iCheck" <?= $info->language == "th" ? "checked" : ""  ?>>
+                แสดงหัวข้อภาษา :
+                <input id="english_title" type="radio" name="iCheck" <?= $info->language == "en" ? "checked" : ""  ?>><label for="english_title"> &nbsp; English</label>
+
+                &nbsp;<input id="thai_title" type="radio" name="iCheck" <?= $info->language == "th" ? "checked" : ""  ?>><label for="thai_title"> &nbsp; ภาษาไทย</label>
               <p>
 
 

@@ -70,6 +70,7 @@
                       <li><a href="<?= site_url('main/edit_profile') ?>">แก้ไขข้อมูลพื้นฐาน</a></li>
                       <li><a href="<?= site_url('main/edit_picture') ?>">แก้ไขรูปภาพ</a></li>
                       <li><a href="<?= site_url('main/groups') ?>">กลุ่มวิจัย</a></li>
+                      <li><a href="<?= site_url('main/users') ?>">จัดการผู้ใช้งาน</a></li>
 							 <!--
                       <li><a href="<?= site_url('main/edit_group') ?>">แก้ไขกลุ่มวิจัย</a></li>
 							 -->
