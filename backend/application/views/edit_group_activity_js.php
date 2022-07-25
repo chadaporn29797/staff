@@ -18,16 +18,17 @@ var activity_table=$('#activity-table').DataTable(
             { title : "ผู้เพิ่ม" ,"data": "firstName" },
 				{ "data" : null, 
 				  "defaultContent" : "<button class='edit-activity btn btn-default'>Edit</button><button class='delete-activity btn btn-default'>Delete</button><button class='preview-activity btn btn-default'>Preview</button>"  }
-      ],
+      ]
+	  ,
 		"buttons" : [
-			   { text : "เพิ่มข่าว/กิจกรรม",
+			   { text : "",
 				  className : "btn btn-default",
 				  action : function(){ 
 				  		resetActivityForm();
-				  		$('#add-new-activity')
+				  		$('add-new-activity')
 						.modal({ keyboard: true, backdrop: 'static' })
 						.modal('show');  
-						//console.log($('#add-new-activity'));
+						console.log($('#add-new-activity'));
 					}  
 				}
 		]
@@ -52,7 +53,7 @@ var research_table=$('#research-table').DataTable(
 				  "defaultContent" : "<button class='edit-research btn btn-default'>Edit</button><button class='delete-research btn btn-default'>Delete</button><button class='preview-research btn btn-default'>Preview</button>"  }
       ],
 		"buttons" : [
-			   { text : "เพิ่มงานวิจัย",
+			   { text : "",
 				  className : "btn btn-default",
 				  action : function(){ 
 				  		resetResearchForm();

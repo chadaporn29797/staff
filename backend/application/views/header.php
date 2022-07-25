@@ -22,6 +22,20 @@
     <!-- BEGIN Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="<?= base_url('chameleon') ?>/theme-assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('chameleon') ?>/theme-assets/css/core/colors/palette-gradient.css">
+
+
+    <!-- Font Awesome -->
+    <link href="<?= base_url('Gentelella') ?>/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="<?= base_url('Gentelella') ?>/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- ICheck -->
+    <link href="<?= base_url('Gentelella') ?>/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	 <!-- fancybox-->
+    <link href="<?= base_url('assets') ?>/js/fancybox/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets') ?>/css/staff.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <!-- <link href="<?= base_url('Gentelella') ?>/build/css/custom.min.css" rel="stylesheet"> -->
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
     <!-- END Custom CSS-->
