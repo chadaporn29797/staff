@@ -423,16 +423,16 @@
                 <h4><?= $info->fullNameENG ?></h4>
 
                 <ul class="list-unstyled user_data">
-                  <li><i class="fa fa-map-marker user-profile-icon"></i>ห้องพัก <?= $info->roomNumber ?>
+                  <li><i class="fa fa-map-marker user-profile-icon"></i>&nbsp;ห้องพัก <?= $info->roomNumber ?>
                   </li>
-                  <li> เบอร์โทรภายใน <?= $info->tel ?></li>
-                  <li> โทรศัพท์มือถือ <?= $info->mobile ?></li>
+                  <li><i class="fa fa-phone"></i> เบอร์โทรภายใน <?= $info->tel ?></li>
+                  <li><i class="fa fa-mobile-phone"></i> โทรศัพท์มือถือ <?= $info->mobile ?></li>
 
                   <li>
                     <i class="fa fa-envelope"></i> <?= $info->email ?>
                   </li>
                   <li>
-                    <i class="fa fa-briefcase user-profile-icon"></i>สังกัด <?= $info->departmentName ?>
+                    <i class="fa fa-briefcase user-profile-icon"></i>&nbsp;สังกัด <?= $info->departmentName ?>
                   </li>
                 </ul>
 
@@ -459,26 +459,26 @@
                   <div class="panel panel-default">
                     <div class="panel-heading">
                       <h4>
-                        <a href="#addEducationModal" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a href="<?= site_url('main/add_education') ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                         <span id="education" class='dashboard-title'>Educational Background</span>
                     </div>
                     </h4>
                   </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-body">
-                    <?php foreach ($educations as $education) : ?>
-                      <div class="row">
-                        <div class="col-md-2">
-                          <a href='#editEducationModal' data-toggle='modal' data-id='<?= $education->id ?>'><i class="fa fa-pencil"></i></a>
-                          <a href='#' class="delete-education" data-id='<?= $education->id ?>'><i class="fa fa-remove"></i></a>
-                          <a href='#' class="sort-education" data-direction="up" data-sort-order="<?= $education->sortOrder ?>" data-id='<?= $education->id ?>'><i class="fa fa-angle-double-up"></i></a>
-                          <a href='#' class="sort-education" data-direction="down" data-sort-order="<?= $education->sortOrder ?>" data-id='<?= $education->id ?>'><i class="fa fa-angle-double-down"></i></a>
-                        </div>
+                  <div class="card-content">
+                    <div class="card-body">
+                      <?php foreach ($educations as $education) : ?>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <a href='#editEducationModal' data-toggle='modal' data-id='<?= $education->id ?>'><i class="fa fa-pencil"></i></a>
+                            <a href='#' class="delete-education" data-id='<?= $education->id ?>'><i class="fa fa-remove"></i></a>
+                            <a href='#' class="sort-education" data-direction="up" data-sort-order="<?= $education->sortOrder ?>" data-id='<?= $education->id ?>'><i class="fa fa-angle-double-up"></i></a>
+                            <a href='#' class="sort-education" data-direction="down" data-sort-order="<?= $education->sortOrder ?>" data-id='<?= $education->id ?>'><i class="fa fa-angle-double-down"></i></a>
+                          </div>
 
-                        <div class="col-md-10"><?= $education->detail ?></div>
-                      </div>
-                    <?php endforeach; ?>
+                          <div class="col-md-10"><?= $education->detail ?></div>
+                        </div>
+                      <?php endforeach; ?>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -490,7 +490,8 @@
                 <div class="card-body">
                   <div class="panel panel-default">
                     <div class="panel-heading">
-                      <h4><a href="#editOverviewModal" data-toggle="modal"><i class="fa fa-edit m-right-xs"></i></a>
+                      <h4>
+                        <a href="<?= site_url('main/add_overview') ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                         <span id="overview" class='dashboard-title'>Research Overview</span>
                       </h4>
                     </div>
@@ -510,7 +511,7 @@
                   <div class="panel panel-default">
                     <div class="panel-heading">
                       <h4>
-                        <a href="#addAwardModal" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a href="<?= site_url('main/add_award') ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                         <span id="award" class='dashboard-title'>Awards and Honours</span>
                       </h4>
                     </div>
@@ -541,7 +542,7 @@
                   <div class="panel panel-default">
                     <div class="panel-heading">
                       <h4>
-                        <a href="#addScholarshipModal" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a href="<?= site_url('main/add_scholarship') ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                         <span id="scholarship" class='dashboard-title'>Scholarships</span>
                       </h4>
                     </div>
@@ -573,7 +574,7 @@
                   <div class="panel panel-default">
                     <div class="panel-heading">
                       <h4>
-                        <a href="#addWork_expModal" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a href="<?= site_url('main/add_work_exps') ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                         <span id="working" class='dashboard-title'>Working Experiences</span>
                       </h4>
                     </div>
@@ -605,7 +606,7 @@
                   <div class="panel panel-default">
                     <div class="panel-heading">
                       <h4>
-                        <a href="#addPublicationModal" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a href="<?= site_url('main/add_publication') ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                         <span id="publication" class='dashboard-title'>Publications </span>
                       </h4>
                     </div>
@@ -637,7 +638,7 @@
                   <div class="panel panel-default">
                     <div class="panel-heading">
                       <h4>
-                        <a href="#addSkillModal" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a href="<?= site_url('main/add_skill') ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                         <span id="skill" class='dashboard-title'>Skills </span>
                       </h4>
                     </div>
@@ -669,7 +670,7 @@
                   <div class="panel panel-default">
                     <div class="panel-heading">
                       <h4>
-                        <a href="#addTrainingModal" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a href="<?= site_url('main/add_training') ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                         <span id="training" class='dashboard-title' data-lang="en">Trainings</span>
                       </h4>
                     </div>
@@ -699,4 +700,5 @@
 
     </div>
     </section>
+
     <!-- // Line Awesome section end -->

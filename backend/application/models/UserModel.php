@@ -19,6 +19,18 @@ class UserModel extends CI_Model {
 				return true;
 		  }
 
+		  public function getQuery($arr=""){
+			$this->db->select('*');
+			$this->db->from('user');
+			if($arr != ""){
+				for($i=0; $i< count($arr); $i++){
+					$this->db->where($arr[$i]); 
+				}
+			}
+			$query = $this->db->get();
+			return $query->result();
+        }
+
 		  public function getResearchGroups(){
 
 				$userID = $this->session->userdata('userID');

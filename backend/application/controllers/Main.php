@@ -96,6 +96,277 @@ class Main extends CI_Controller {
 		}
 	}
 
+	public function add_education($userID=null,$id=-1){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$this->load->model("CourseManager");
+			$data["courseID"]=$this->CourseManager->getOwnCourseID();
+
+			$this->load->model("UserModel");
+
+
+			if($userID == null )
+ 				$userID =  $this->session->userdata("userID") ;
+
+			$data["info"]= $this->UserModel->getUserInfo();
+			//$data["educations"]= $this->UserModel->getUserEducations($userID);
+			$data["educations"]= $this->UserModel->getDetail("education",$userID);
+
+			$data["userID"] = $userID;
+			$data["educationID"] = $id;
+			if( $id != -1)
+			  $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
+		   $this->load->view('header',$data);
+			$this->load->view('add_education',$data);
+			$this->load->view('footer');
+			$this->load->view('dashboard_js',$data);
+		}
+	}
+
+	public function add_overview($userID=null,$id=-1){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$this->load->model("CourseManager");
+			$data["courseID"]=$this->CourseManager->getOwnCourseID();
+
+			$this->load->model("UserModel");
+
+
+			if($userID == null )
+ 				$userID =  $this->session->userdata("userID") ;
+
+			$data["info"]= $this->UserModel->getUserInfo();
+			//$data["educations"]= $this->UserModel->getUserEducations($userID);
+			$data["educations"]= $this->UserModel->getDetail("education",$userID);
+			$data["awards"]= $this->UserModel->getDetail("award",$userID);
+			$data["scholarships"]= $this->UserModel->getDetail("scholarship",$userID);
+			$data["work_exps"]= $this->UserModel->getDetail("work_exp",$userID);
+			$data["publications"]= $this->UserModel->getDetail("publication",$userID);
+			$data["skills"]= $this->UserModel->getDetail("skill",$userID);
+			$data["trainings"]= $this->UserModel->getDetail("training",$userID);
+
+			$data["userID"] = $userID;
+			$data["educationID"] = $id;
+			if( $id != -1)
+			  $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
+		   $this->load->view('header',$data);
+			$this->load->view('add_overview',$data);
+			$this->load->view('footer');
+			$this->load->view('dashboard_js',$data);
+		}
+	}
+
+	public function add_award($userID=null,$id=-1){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$this->load->model("CourseManager");
+			$data["courseID"]=$this->CourseManager->getOwnCourseID();
+
+			$this->load->model("UserModel");
+
+
+			if($userID == null )
+ 				$userID =  $this->session->userdata("userID") ;
+
+			$data["info"]= $this->UserModel->getUserInfo();
+			$data["awards"]= $this->UserModel->getDetail("award",$userID);
+
+			$data["userID"] = $userID;
+			$data["educationID"] = $id;
+			if( $id != -1)
+			  $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
+		   $this->load->view('header',$data);
+			$this->load->view('add_award',$data);
+			$this->load->view('footer');
+			$this->load->view('dashboard_js',$data);
+		}
+	}
+
+	public function add_scholarship($userID=null,$id=-1){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$this->load->model("CourseManager");
+			$data["courseID"]=$this->CourseManager->getOwnCourseID();
+
+			$this->load->model("UserModel");
+
+
+			if($userID == null )
+ 				$userID =  $this->session->userdata("userID") ;
+
+			$data["info"]= $this->UserModel->getUserInfo();
+			$data["scholarships"]= $this->UserModel->getDetail("scholarship",$userID);
+
+			$data["userID"] = $userID;
+			$data["educationID"] = $id;
+			if( $id != -1)
+			  $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
+		   $this->load->view('header',$data);
+			$this->load->view('add_scholarship',$data);
+			$this->load->view('footer');
+			$this->load->view('dashboard_js',$data);
+		}
+	}
+
+	public function add_work_exps($userID=null,$id=-1){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$this->load->model("CourseManager");
+			$data["courseID"]=$this->CourseManager->getOwnCourseID();
+
+			$this->load->model("UserModel");
+
+
+			if($userID == null )
+ 				$userID =  $this->session->userdata("userID") ;
+
+			$data["info"]= $this->UserModel->getUserInfo();
+			$data["work_exps"]= $this->UserModel->getDetail("work_exp",$userID);
+
+			$data["userID"] = $userID;
+			$data["educationID"] = $id;
+			if( $id != -1)
+			  $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
+		   $this->load->view('header',$data);
+			$this->load->view('add_work_exps',$data);
+			$this->load->view('footer');
+			$this->load->view('dashboard_js',$data);
+		}
+	}
+
+	public function add_publication($userID=null,$id=-1){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$this->load->model("CourseManager");
+			$data["courseID"]=$this->CourseManager->getOwnCourseID();
+
+			$this->load->model("UserModel");
+
+
+			if($userID == null )
+ 				$userID =  $this->session->userdata("userID") ;
+
+			$data["info"]= $this->UserModel->getUserInfo();
+			$data["publications"]= $this->UserModel->getDetail("publication",$userID);
+
+			$data["userID"] = $userID;
+			$data["educationID"] = $id;
+			if( $id != -1)
+			  $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
+		   $this->load->view('header',$data);
+			$this->load->view('add_publication',$data);
+			$this->load->view('footer');
+			$this->load->view('dashboard_js',$data);
+		}
+	}
+
+	public function add_skill($userID=null,$id=-1){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$this->load->model("CourseManager");
+			$data["courseID"]=$this->CourseManager->getOwnCourseID();
+
+			$this->load->model("UserModel");
+
+
+			if($userID == null )
+ 				$userID =  $this->session->userdata("userID") ;
+
+			$data["info"]= $this->UserModel->getUserInfo();
+			$data["skills"]= $this->UserModel->getDetail("skill",$userID);
+
+			$data["userID"] = $userID;
+			$data["educationID"] = $id;
+			if( $id != -1)
+			  $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
+		   $this->load->view('header',$data);
+			$this->load->view('add_skill',$data);
+			$this->load->view('footer');
+			$this->load->view('dashboard_js',$data);
+		}
+	}
+
+	public function add_training($userID=null,$id=-1){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$this->load->model("CourseManager");
+			$data["courseID"]=$this->CourseManager->getOwnCourseID();
+
+			$this->load->model("UserModel");
+
+
+			if($userID == null )
+ 				$userID =  $this->session->userdata("userID") ;
+
+			$data["info"]= $this->UserModel->getUserInfo();
+			$data["trainings"]= $this->UserModel->getDetail("training",$userID);
+
+			$data["userID"] = $userID;
+			$data["educationID"] = $id;
+			if( $id != -1)
+			  $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
+		   $this->load->view('header',$data);
+			$this->load->view('add_training',$data);
+			$this->load->view('footer');
+			$this->load->view('dashboard_js',$data);
+		}
+	}
+
+	public function edit_education($id=-1){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+			$this->load->model("UserModel");
+			$data["info"]= $this->UserModel->getUserInfo();
+			$data["educations"]= $this->UserModel->getUserEducations();
+			$data["educationID"] = $id;
+			if( $id != -1)
+			  $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
+
+		   $this->load->view('header',$data);
+		   $this->load->view('edit_education',$data);
+			$this->load->view('footer');
+			$this->load->view('edit_education_js',$data);
+			// $this->load->view('dashboard_js',$data);
+
+
+		}
+	}
+
 	public function userinfo($userID){
 		$this->load->model("UserModel");
 		$data["userID"] = $userID ;
@@ -271,6 +542,21 @@ class Main extends CI_Controller {
 		}
 	}
 
+	// public function add_education($userID=null){
+	// 	if( null === $this->session->userdata("userID")){
+	// 		$this->load->helper('form');
+	// 		$this->load->view('login.php');
+	// 	}
+	// 	else{
+	// 	 $this->load->model("UserModel");
+	// 	 $data["userID"] = $userID ;
+	// 	 $data["info"]= $this->UserModel->getUserInfo($userID);
+	// 	 $this->load->view('header',$data);
+	// 	 $this->load->view('add_education',$data);
+	// 	 $this->load->view('footer');
+	// 	}
+	// }
+
 	public function manage_users(){
 	  if( null === $this->session->userdata("userID")){
 			$this->load->helper('form');
@@ -379,6 +665,7 @@ class Main extends CI_Controller {
 			$data["userID"] = $userID ;
 			$data["info"]= $this->UserModel->getUserInfo($userID);
 			$data["research_groups"]= $this->ResearchGroup->getResearchGroups();
+			$data["users"]= $this->UserModel->getQuery();
 			$this->load->view('header',$data);
 			$this->load->view('users',$data);
 			$this->load->view('footer');
@@ -745,13 +1032,13 @@ class Main extends CI_Controller {
 		}
 	}
 	
-	public function add_scholarship(){
-		$this->load->view('header');
-	   $this->load->model("UserModel");
-		$this->UserModel->addUserScholarship();
-	   redirect(site_url('main/edit_scholarship'));
+	// public function add_scholarship(){
+	// 	$this->load->view('header');
+	//    $this->load->model("UserModel");
+	// 	$this->UserModel->addUserScholarship();
+	//    redirect(site_url('main/edit_scholarship'));
 
-	}
+	// }
 
 	public function update_scholarship(){
 		$this->load->view('header');
@@ -766,31 +1053,16 @@ class Main extends CI_Controller {
 	   redirect(site_url('main/edit_scholarship'));
 	}
 
-   public function edit_education($id=-1){
-		if( null === $this->session->userdata("userID")){
-			$this->load->helper('form');
-			$this->load->view('login.php');
-		}
-		else{
-			$this->load->model("UserModel");
-			$data["info"]= $this->UserModel->getUserInfo();
-			$data["educations"]= $this->UserModel->getUserEducations();
-			$data["educationID"] = $id;
-			if( $id != -1)
-			  $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
+   
 
-		   $this->load->view('header',$data);
-		   $this->load->view('edit_education',$data);
-			$this->load->view('footer');
-		}
-	}
 
-	public function add_education(){
-		$this->load->view('header');
-	   $this->load->model("UserModel");
-		$this->UserModel->addUserEducation();
-	   redirect(site_url('main/edit_education'));
-	}
+
+	// public function add_education(){
+	// 	$this->load->view('header');
+	//    $this->load->model("UserModel");
+	// 	$this->UserModel->addUserEducation();
+	//    redirect(site_url('main/edit_education'));
+	// }
 
 	public function update_education(){
 		$this->load->view('header');
