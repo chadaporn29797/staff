@@ -367,6 +367,8 @@ class Main extends CI_Controller {
 		}
 	}
 
+	
+
 	public function userinfo($userID){
 		$this->load->model("UserModel");
 		$data["userID"] = $userID ;
@@ -527,20 +529,7 @@ class Main extends CI_Controller {
 
 	}
 
-	public function edit_profile($userID=null){
-		if( null === $this->session->userdata("userID")){
-			$this->load->helper('form');
-			$this->load->view('login.php');
-		}
-		else{
-		 $this->load->model("UserModel");
-		 $data["userID"] = $userID ;
-		 $data["info"]= $this->UserModel->getUserInfo($userID);
-		 $this->load->view('header',$data);
-		 $this->load->view('edit_profile',$data);
-		 $this->load->view('footer');
-		}
-	}
+	
 
 	// public function add_education($userID=null){
 	// 	if( null === $this->session->userdata("userID")){
@@ -652,6 +641,80 @@ class Main extends CI_Controller {
 		}
 	}
 
+	public function edit_profile($userID=null){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+			
+		 $userID = $this->session->userdata("userID");
+		 $this->load->model("UserModel");
+		 $data["userID"] = $userID ;
+		 $data["info"]= $this->UserModel->getUserInfo($userID);
+		 $this->load->view('header',$data);
+		 $this->load->view('edit_profile',$data);
+		 $this->load->view('footer');
+		}
+	}
+
+	public function research(){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$userID = $this->session->userdata("userID");
+			$this->load->model("UserModel");
+			$data["userID"] = $userID ;
+			$data["info"]= $this->UserModel->getUserInfo($userID);
+			$data["users"]= $this->UserModel->getQuery();
+			$this->load->view('header',$data);
+			$this->load->view('research',$data);
+			$this->load->view('footer');
+			$this->load->view('groups_js',$data);
+		}
+	}
+
+	public function document(){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$userID = $this->session->userdata("userID");
+			$this->load->model("UserModel");
+			$data["userID"] = $userID ;
+			$data["info"]= $this->UserModel->getUserInfo($userID);
+			$data["users"]= $this->UserModel->getQuery();
+			$this->load->view('header',$data);
+			$this->load->view('document',$data);
+			$this->load->view('footer');
+			$this->load->view('groups_js',$data);
+		}
+	}
+
+	public function workload(){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$userID = $this->session->userdata("userID");
+			$this->load->model("UserModel");
+			$data["userID"] = $userID ;
+			$data["info"]= $this->UserModel->getUserInfo($userID);
+			$data["users"]= $this->UserModel->getQuery();
+			$this->load->view('header',$data);
+			$this->load->view('workload',$data);
+			$this->load->view('footer');
+			$this->load->view('groups_js',$data);
+		}
+	}
+
 	public function users(){
 		if( null === $this->session->userdata("userID")){
 			$this->load->helper('form');
@@ -661,10 +724,8 @@ class Main extends CI_Controller {
 
 			$userID = $this->session->userdata("userID");
 			$this->load->model("UserModel");
-			$this->load->model("ResearchGroup");
 			$data["userID"] = $userID ;
 			$data["info"]= $this->UserModel->getUserInfo($userID);
-			$data["research_groups"]= $this->ResearchGroup->getResearchGroups();
 			$data["users"]= $this->UserModel->getQuery();
 			$this->load->view('header',$data);
 			$this->load->view('users',$data);

@@ -30,7 +30,7 @@
     <link href="<?= base_url('Gentelella') ?>/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- ICheck -->
     <link href="<?= base_url('Gentelella') ?>/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	 <!-- fancybox-->
+    <!-- fancybox-->
     <link href="<?= base_url('assets') ?>/js/fancybox/jquery.fancybox.min.css" rel="stylesheet">
     <link href="<?= base_url('assets') ?>/css/staff.css" rel="stylesheet">
 
@@ -67,29 +67,52 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav float-right">
-                        <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-th"></i><span class="selected-language"></span></a>
+                    <?php if($info->language == "th"){ ?>
+
+                        <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="flag-icon flag-icon-th">
+                            </i><span class="selected-language"></span></a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-flag">
                                 <div class="arrow_box">
-                                    <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-th"></i> Thai</a>
-                                    <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-us"></i> English</a>
+                                    <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-th"></i> <input id="thai_title" type="radio" name="iCheck" <?= $info->language == "th" ? "checked" : ""  ?>>Thai</a>
+                                    <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-us"></i> <input id="english_title" type="radio" name="iCheck" <?= $info->language == "en" ? "checked" : ""  ?>>English</a>
                                 </div>
                             </div>
                         </li>
+                        <?php }else if($info->language == "en"){ ?>
+                            <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="flag-icon flag-icon-us">
+                            </i><span class="selected-language"></span></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-flag">
+                                <div class="arrow_box">
+                                    <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-th"></i> <input id="thai_title" type="radio" name="iCheck" <?= $info->language == "th" ? "checked" : ""  ?>>Thai</a>
+                                    <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-us"></i> <input id="english_title" type="radio" name="iCheck" <?= $info->language == "en" ? "checked" : ""  ?>>English</a>
+                                </div>
+                            </div>
+                        </li>
+                        <?php } ?>
+
                     </ul>
+                    <!-- <p>
+                        แสดงหัวข้อภาษา :
+                        <input id="english_title" type="radio" name="iCheck" <?= $info->language == "en" ? "checked" : ""  ?>><label for="english_title"> &nbsp; English</label>
+
+                        &nbsp;<input id="thai_title" type="radio" name="iCheck" <?= $info->language == "th" ? "checked" : ""  ?>><label for="thai_title"> &nbsp; ภาษาไทย</label>
+                    <p> -->
                     <ul class="nav navbar-nav float-right">
 
-                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"> <span class="avatar avatar-online"><img src="<?= base_url("../avatars/".$info->ubu_mail.".png")."?".rand() ?>" alt="avatar"><i></i></span></a>
+                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"> <span class="avatar avatar-online"><img src="<?= base_url("../avatars/" . $info->ubu_mail . ".png") . "?" . rand() ?>" alt="avatar"><i></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="arrow_box_right">
                                     <a class="dropdown-item" href="<?= site_url('main/dashboard') ?>">
                                         <span class="avatar avatar-online">
-                                            <img href='<?= site_url('main/dashboard') ?>' src="<?= base_url("../avatars/".$info->ubu_mail.".png")."?".rand() ?>" alt="avatar">
+                                            <img href='<?= site_url('main/dashboard') ?>' src="<?= base_url("../avatars/" . $info->ubu_mail . ".png") . "?" . rand() ?>" alt="avatar">
                                             <span class="user-name text-bold-200 ml-1"><?= $this->session->userdata("name") ?></span>
                                         </span>
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="<?= site_url('main/edit_profile') ?>"><i class="ft-user"></i> Edit Profile</a>
-                                    <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
+                                    <a class="dropdown-item" href='../../../<?= $info->ubu_mail ?>'><i class="ft-mail"></i> My CV</a>
                                     <div class="dropdown-divider"></div><a class="dropdown-item" title="Logout" href="<?= site_url('main/logout') ?>"><i class="ft-power"></i> Logout</a>
                                 </div>
                             </div>
@@ -122,15 +145,21 @@
                 </li>
                 <li class=" nav-item"><a href="<?= site_url('main/groups') ?>"><i class="la la-group"></i><span class="menu-title" data-i18n="">กลุ่มวิจัย</span></a>
                 </li>
+                <li class=" nav-item"><a href="<?= site_url('main/research') ?>"><i class="la la-book"></i><span class="menu-title" data-i18n="">งานวิจัย</span></a>
+                </li>
+                <li class=" nav-item"><a href="<?= site_url('main/workload') ?>"><i class="la la-archive"></i><span class="menu-title" data-i18n="">ภาระงาน</span></a>
+                </li>
+                <li class=" nav-item"><a href="<?= site_url('main/document') ?>"><i class="la la-bullhorn"></i><span class="menu-title" data-i18n="">คำสั่ง</span></a>
+                </li>
                 <li class=" nav-item"><a href="<?= site_url('main/users') ?>"><i class="la la-user-plus"></i><span class="menu-title" data-i18n="">จัดการผู้ใช้งาน</span></a>
                 </li>
-                
+
             </ul>
         </div>
         <div class="navigation-background"></div>
     </div>
 
-    
+
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
 

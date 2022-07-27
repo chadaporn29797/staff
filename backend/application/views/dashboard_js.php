@@ -48,6 +48,8 @@
 			language: lang
 		}, function(data) {
 			if (data.success == true) {
+				location.reload(true);
+
 				console.log("update language to " + lang);
 			}
 		}, "json");
