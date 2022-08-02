@@ -127,6 +127,39 @@ class Main extends CI_Controller {
 		}
 	}
 
+	public function edit_education($id){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$this->load->model("CourseManager");
+			$data["courseID"]=$this->CourseManager->getOwnCourseID();
+
+			$this->load->model("UserModel");
+
+
+			// if($userID == null )
+ 				$userID =  $this->session->userdata("userID") ;
+
+			$data["info"]= $this->UserModel->getUserInfo();
+			//$data["educations"]= $this->UserModel->getUserEducations($userID);
+			$data["educations"]= $this->UserModel->getDetail("education",$userID);
+			$data['eduID'] = $this->UserModel->getEdu(array("id=" . $id));
+			$data['education'] = $this->UserModel->getQuery(array("userID =".$userID));
+
+			$data["userID"] = $userID;
+			$data["educationID"] = $id;
+			// if( $id != -1)
+			//   $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
+		   	$this->load->view('header',$data);
+			$this->load->view('edit_education',$data);
+			$this->load->view('footer');
+			$this->load->view('dashboard_js',$data);
+		}
+	}
+
 	public function add_overview($userID=null,$id=-1){
 		if( null === $this->session->userdata("userID")){
 			$this->load->helper('form');
@@ -344,28 +377,7 @@ class Main extends CI_Controller {
 		}
 	}
 
-	public function edit_education($id=-1){
-		if( null === $this->session->userdata("userID")){
-			$this->load->helper('form');
-			$this->load->view('login.php');
-		}
-		else{
-			$this->load->model("UserModel");
-			$data["info"]= $this->UserModel->getUserInfo();
-			$data["educations"]= $this->UserModel->getUserEducations();
-			$data["educationID"] = $id;
-			if( $id != -1)
-			  $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
-
-		   $this->load->view('header',$data);
-		   $this->load->view('edit_education',$data);
-			$this->load->view('footer');
-			$this->load->view('edit_education_js',$data);
-			// $this->load->view('dashboard_js',$data);
-
-
-		}
-	}
+	
 
 	
 

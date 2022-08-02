@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div class="app-content content">
   <div class="content-wrapper">
     <div class="content-wrapper-before"></div>
@@ -24,17 +25,7 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">ข้อมูลประวัติการศึกษา</h4>
-                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
-                  <ul class="list-inline mb-0">
-                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                    <!-- <li><a data-action="close"><i class="ft-x"></i></a></li> -->
-                  </ul>
-                </div>
-              </div>
+
 
 
               <div class="ml-6">
@@ -59,18 +50,19 @@
                             </thead>
                             <tbody>
                               <?php $counter = 0; ?>
-                              <?php foreach ($educations as $e) : ?>
+                              <?php foreach ($eduID as $e) : ?>
 
                                 <tr>
                                   <th scope="row"><?= ++$counter ?></th>
-                                  <td><?= $e->detail ?></td>
+                                  <td><?php print_r($eduID); ?>
+                                  </td>
                                   <td>
-                                    <a href='<?= site_url('main/edit_education/' . $e->educationID) ?>'>
+                                    <a href='<?= site_url('main/edit_education/' . $e->id) ?>'>
                                       <i class="fa fa-wrench"></i>
                                     </a>
-                                    <a href='<?= site_url('main/remove_education/' . $e->educationID) ?>'>
-                                      <i class="fa fa-remove"></i>
-                                    </a>
+                                    <a href='#' class="delete-education2" data-id='<?= $e->id ?>'><i class="fa fa-remove"></i></a>
+                                    <a href='#' class="sort-education" data-direction="up" data-sort-order="<?= $e->sortOrder ?>" data-id='<?= $e->id ?>'><i class="fa fa-angle-double-up"></i></a>
+                                    <a href='#' class="sort-education" data-direction="down" data-sort-order="<?= $e->sortOrder ?>" data-id='<?= $e->id ?>'><i class="fa fa-angle-double-down"></i></a>
 
                                   </td>
                                 </tr>
@@ -98,19 +90,17 @@
           </div>
         </div>
       </section>
-
       <section id="line-awesome-icons">
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">เพิ่มประวัติการศึกษา</h4>
+                <h4 class="card-title">แก้ไขประวัติการศึกษา</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="list-inline mb-0">
                     <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                    <a href="#addEducationModal" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
 
                     <!-- <li><a data-action="close"><i class="ft-x"></i></a></li> -->
                   </ul>
@@ -121,11 +111,16 @@
               <div class="ml-6">
                 <!--start content -->
                 <br>
-                <div class="clearfix"></div>
-                <textarea id="addEducationContent" name="addEducationContent"></textarea>
-                <!--- end content -->
+                <div class="ml-3 mr-3">
+                  <?php foreach ($eduID as $e) : ?>
+                    <textarea id="addEducationContent" name="addEducationContent" value="<?= $e->detail ?>"></textarea>
+                  <?php endforeach; ?>
+                </div>
+                <button id="addEducationContent_bt" class="btn btn-success btn-default pull-right m-2 mr-2">บันทึก</button>
+                <br>
 
               </div>
+
 
 
 
@@ -133,26 +128,4 @@
           </div>
         </div>
       </section>
-      <div class="modal fade" id="addEducationModal" role="dialog">
-        <div class="modal-dialog modal-lg">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4>Add Educational Background</h4>
-            </div>
-            <div class="modal-body">
-              <textarea id="addEducationContent" name="addEducationContent"></textarea>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-success btn-default pull-left">บันทึก</button>
-              <button class="btn btn-primary btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
-            </div>
-            <!--end modal footer-->
-          </div>
-          <!--end modal content-->
-        </div>
-        <!--end modal dialog-->
-      </div>
-
-     
+      <!-- // Line Awesome section end -->

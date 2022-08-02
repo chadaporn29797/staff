@@ -21,6 +21,8 @@
   <!--end modal dialog-->
 </div>
 <!--end editEeducation modal-->
+
+
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div class="app-content content">
   <div class="content-wrapper">
@@ -90,7 +92,9 @@
                                   <th scope="row"><?= ++$counter ?></th>
                                   <td><?= $e->detail ?></td>
                                   <td>
-                                    <a href='#editEducationModal' data-toggle='modal' data-id='<?= $e->id ?>'><i class="fa fa-pencil"></i></a>
+                                  <a href='<?= site_url('main/edit_education/' . $e->id) ?>'>
+                                      <i class="fa fa-wrench"></i>
+                                    </a>
                                     <a href='#' class="delete-education2" data-id='<?= $e->id ?>'><i class="fa fa-remove"></i></a>
                                     <a href='#' class="sort-education" data-direction="up" data-sort-order="<?= $e->sortOrder ?>" data-id='<?= $e->id ?>'><i class="fa fa-angle-double-up"></i></a>
                                     <a href='#' class="sort-education" data-direction="down" data-sort-order="<?= $e->sortOrder ?>" data-id='<?= $e->id ?>'><i class="fa fa-angle-double-down"></i></a>

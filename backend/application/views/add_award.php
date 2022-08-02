@@ -1,3 +1,27 @@
+<!--editAwards modal -->
+<div class="modal fade" id="editAwardModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Edit Awards and Honours</h4>
+      </div>
+      <div class="modal-body">
+        <textarea id="editAwardContent" name="editAwardContent"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success btn-default pull-left">บันทึก</button>
+        <button class="btn btn-primary btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+      </div>
+      <!--end modal footer-->
+    </div>
+    <!--end modal content-->
+  </div>
+  <!--end modal dialog-->
+</div>
+<!--end editAward modal-->
+
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div class="app-content content">
@@ -67,7 +91,7 @@
                                   <th scope="row"><?= ++$counter ?></th>
                                   <td><?= $e->detail ?></td>
                                   <td>
-                                    <a href='<?= site_url('main/edit_education/' . $e->educationID) ?>'>
+                                    <a href='<?= site_url('main/edit_award/' . $e->id) ?>'>
                                       <i class="fa fa-wrench"></i>
                                     </a>
                                     <a href='#' class="delete-award2" data-id='<?= $e->id ?>'><i class="fa fa-remove"></i></a>

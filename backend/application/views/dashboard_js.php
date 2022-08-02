@@ -305,6 +305,13 @@
 		$('#editAwardModal').data("id", $(e.relatedTarget).data("id"));
 		var text = $(e.relatedTarget).parent().next().html();
 		tinymce.get('editAwardContent').setContent(text);
+		// console.log(text);
+	});
+
+	$('#editAwardModal2').on('show.bs.modal', function(e) {
+		$('#editAwardModal2').data("id", $(e.relatedTarget).data("id"));
+		var text = $(e.relatedTarget).parent().next().html();
+		tinymce.get('editAwardContent').setContent(text);
 	});
 
 
