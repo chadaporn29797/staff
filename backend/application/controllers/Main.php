@@ -178,13 +178,7 @@ class Main extends CI_Controller {
 
 			$data["info"]= $this->UserModel->getUserInfo();
 			//$data["educations"]= $this->UserModel->getUserEducations($userID);
-			$data["educations"]= $this->UserModel->getDetail("education",$userID);
-			$data["awards"]= $this->UserModel->getDetail("award",$userID);
-			$data["scholarships"]= $this->UserModel->getDetail("scholarship",$userID);
-			$data["work_exps"]= $this->UserModel->getDetail("work_exp",$userID);
-			$data["publications"]= $this->UserModel->getDetail("publication",$userID);
-			$data["skills"]= $this->UserModel->getDetail("skill",$userID);
-			$data["trainings"]= $this->UserModel->getDetail("training",$userID);
+			$data["overviews"]= $this->UserModel->getDetail("overview",$userID);
 
 			$data["userID"] = $userID;
 			$data["educationID"] = $id;

@@ -486,24 +486,19 @@
 
 
             <div class="card">
-              <div class="card-content">
-                <div class="card-body">
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h4>
-                        <a href="<?= site_url('main/add_overview') ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                        <span id="overview" class='dashboard-title'>Research Overview</span>
-                      </h4>
-                    </div>
-                  </div>
-                  <div class="card-content">
-                    <div class="card-body">
-                      <?= $info->description ?>
-                    </div>
-                  </div>
+            <div class="card-content">
+            <div class="card-body">
+                <div class="panel-heading">
+                  <h4><a href="#editOverviewModal" data-toggle="modal"><i class="fa fa-edit m-right-xs"></i></a>
+                    <span id="overview" class='dashboard-title'>Research Overview</span>
+                  </h4>
+                </div>
+                <div class="panel-body">
+                  <?= $info->description ?>
+                </div>
+                </div>
                 </div>
               </div>
-            </div>
 
             <div class="card">
               <div class="card-content">

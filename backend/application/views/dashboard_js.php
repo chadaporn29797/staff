@@ -12,7 +12,8 @@
 			working: "Working Experiences",
 			publication: "Publications",
 			skill: "Skills",
-			training: "Trainings"
+			training: "Trainings",
+			education2: "Add Educational Background",
 
 		},
 		th: {
@@ -23,7 +24,9 @@
 			working: "ประสบการณ์การทำงาน",
 			publication: "ผลงานตีพิมพ์",
 			skill: "ทักษะอื่นๆ",
-			training: "การฝึกอบรม"
+			training: "การฝึกอบรม",
+			education2: "เพิ่มประวัติการศึกษา",
+
 		}
 
 	};
@@ -177,9 +180,18 @@
 
 
 	//editEduction Model action
+	// $('#editEducationModal').on('show.bs.modal', function(e) {
+	// 	$('#editEducationModal').data("id", $(e.relatedTarget).data("id"));
+	// 	var id = $('#editEducationModal').data("id");
+	// 	var text = $("#sho"+id).html();
+	// 	console.log(text);
+	// 	console.log(id);
+	// 	tinymce.get('editEducationContent').setContent(text);
+	// });
+
 	$('#editEducationModal').on('show.bs.modal', function(e) {
 		$('#editEducationModal').data("id", $(e.relatedTarget).data("id"));
-		var text = $(e.relatedTarget).parent().next().html();
+		var text = $(e.relatedTarget).parent().prev().html();
 		tinymce.get('editEducationContent').setContent(text);
 	});
 
