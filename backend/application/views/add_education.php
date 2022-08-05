@@ -1,5 +1,5 @@
 <!--editEducation modal -->
-<div class="modal fade" id="editEducationModal" role="dialog">
+<div class="modal fade" id="editEducationModal2" role="dialog">
   <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
@@ -8,7 +8,7 @@
         <h4>Edit Educational Background</h4>
       </div>
       <div class="modal-body">
-        <textarea id="editEducationContent" name="editEducationContent"></textarea>
+        <textarea id="editEducationContent2" name="editEducationContent2"></textarea>
       </div>
       <div class="modal-footer">
         <button class="btn btn-success btn-default pull-left">บันทึก</button>
@@ -71,7 +71,7 @@
                           <div class="col-md-10"><?= $education->detail ?></div>
 
                           <div class="col-md-2">
-                            <a href='#editEducationModal' data-toggle='modal' data-id='<?= $education->id ?>'><i class="fa fa-pencil"></i></a>
+                            <a href='#editEducationModal2' data-toggle='modal' data-id='<?= $education->id ?>'><i class="fa fa-pencil"></i></a>
                             <a href='#' class="delete-education" data-id='<?= $education->id ?>'><i class="fa fa-remove"></i></a>
                             <a href='#' class="sort-education" data-direction="up" data-sort-order="<?= $education->sortOrder ?>" data-id='<?= $education->id ?>'><i class="fa fa-angle-double-up"></i></a>
                             <a href='#' class="sort-education" data-direction="down" data-sort-order="<?= $education->sortOrder ?>" data-id='<?= $education->id ?>'><i class="fa fa-angle-double-down"></i></a>

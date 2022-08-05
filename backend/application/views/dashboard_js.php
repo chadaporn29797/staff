@@ -14,6 +14,12 @@
 			skill: "Skills",
 			training: "Trainings",
 			education2: "Add Educational Background",
+			award2: "Add Awards and Honours",
+			scholarship2: "Add Scholarships",
+			working2: "Add Working Experiences",
+			publication2: "Add Publications",
+			skill2: "Add Skills",
+			training2: "Add Trainings",
 
 		},
 		th: {
@@ -26,6 +32,12 @@
 			skill: "ทักษะอื่นๆ",
 			training: "การฝึกอบรม",
 			education2: "เพิ่มประวัติการศึกษา",
+			award2: "เพิ่มรางวัลและเกียรติยศ",
+			scholarship2: "เพิ่มทุนการศึกษา",
+			working2: "เพิ่มประสบการณ์การทำงาน",
+			publication2: "เพิ่มผลงานตีพิมพ์",
+			skill2: "เพิ่มทักษะอื่นๆ",
+			training2: "เพิ่มการฝึกอบรม",
 
 		}
 
@@ -189,9 +201,15 @@
 	// 	tinymce.get('editEducationContent').setContent(text);
 	// });
 
+	$('#editEducationModal2').on('show.bs.modal', function(e) {
+		$('#editEducationModal2').data("id", $(e.relatedTarget).data("id"));
+		var text = $(e.relatedTarget).parent().prev().html();
+		tinymce.get('editEducationContent2').setContent(text);
+	});
+
 	$('#editEducationModal').on('show.bs.modal', function(e) {
 		$('#editEducationModal').data("id", $(e.relatedTarget).data("id"));
-		var text = $(e.relatedTarget).parent().prev().html();
+		var text = $(e.relatedTarget).parent().next().html();
 		tinymce.get('editEducationContent').setContent(text);
 	});
 
@@ -221,6 +239,23 @@
 		$('#editEducationModal').modal("hide");
 		var content = tinymce.get('editEducationContent').getContent();
 		var id = $('#editEducationModal').data('id');
+		console.log(content + ": " + id);
+		$.post('<?= site_url('main/ajax_updateDetail') ?>', {
+			'tableName': 'education',
+			'id': id,
+			'detail': content
+		}, function(data) {
+			if (data.success == true) {
+				alert("บันทึกสำเร็จ");
+				location.reload(true);
+			}
+		}, "json");
+	});
+
+	$('#editEducationModal2 .btn-success').on("click", function(e) {
+		$('#editEducationModal2').modal("hide");
+		var content = tinymce.get('editEducationContent2').getContent();
+		var id = $('#editEducationModal2').data('id');
 		console.log(content + ": " + id);
 		$.post('<?= site_url('main/ajax_updateDetail') ?>', {
 			'tableName': 'education',
@@ -322,8 +357,8 @@
 
 	$('#editAwardModal2').on('show.bs.modal', function(e) {
 		$('#editAwardModal2').data("id", $(e.relatedTarget).data("id"));
-		var text = $(e.relatedTarget).parent().next().html();
-		tinymce.get('editAwardContent').setContent(text);
+		var text = $(e.relatedTarget).parent().prev().html();
+		tinymce.get('editAwardContent2').setContent(text);
 	});
 
 
@@ -352,6 +387,23 @@
 		$('#editAwardModal').modal("hide");
 		var content = tinymce.get('editAwardContent').getContent();
 		var id = $('#editAwardModal').data('id');
+		console.log(content + ": " + id);
+		$.post('<?= site_url('main/ajax_updateDetail') ?>', {
+			'tableName': 'award',
+			'id': id,
+			'detail': content
+		}, function(data) {
+			if (data.success == true) {
+				alert("บันทึกสำเร็จ");
+				location.reload(true);
+			}
+		}, "json");
+	});
+
+	$('#editAwardModal2 .btn-success').on("click", function(e) {
+		$('#editAwardModal2').modal("hide");
+		var content = tinymce.get('editAwardContent2').getContent();
+		var id = $('#editAwardModal2').data('id');
 		console.log(content + ": " + id);
 		$.post('<?= site_url('main/ajax_updateDetail') ?>', {
 			'tableName': 'award',
@@ -445,6 +497,12 @@
 		tinymce.get('editScholarshipContent').setContent(text);
 	});
 
+	$('#editScholarshipModal2').on('show.bs.modal', function(e) {
+		$('#editScholarshipModal2').data("id", $(e.relatedTarget).data("id"));
+		var text = $(e.relatedTarget).parent().prev().html();
+		tinymce.get('editScholarshipContent2').setContent(text);
+	});
+
 
 	$('.sort-scholarship').on("click", function(e) {
 		e.preventDefault();
@@ -483,6 +541,24 @@
 			}
 		}, "json");
 	});
+
+	$('#editScholarshipModal2 .btn-success').on("click", function(e) {
+		$('#editScholarshipModal2').modal("hide");
+		var content = tinymce.get('editScholarshipContent2').getContent();
+		var id = $('#editScholarshipModal2').data('id');
+		console.log(content + ": " + id);
+		$.post('<?= site_url('main/ajax_updateDetail') ?>', {
+			'tableName': 'scholarship',
+			'id': id,
+			'detail': content
+		}, function(data) {
+			if (data.success == true) {
+				alert("บันทึกสำเร็จ");
+				location.reload(true);
+			}
+		}, "json");
+	});
+
 
 
 	//-------------------------------- End Scholarships --------------------------------//
@@ -560,6 +636,12 @@
 		tinymce.get('editWork_expContent').setContent(text);
 	});
 
+	$('#editWork_expModal2').on('show.bs.modal', function(e) {
+		$('#editWork_expModal2').data("id", $(e.relatedTarget).data("id"));
+		var text = $(e.relatedTarget).parent().prev().html();
+		tinymce.get('editWork_expContent2').setContent(text);
+	});
+
 
 	$('.sort-work_exp').on("click", function(e) {
 		e.preventDefault();
@@ -586,6 +668,23 @@
 		$('#editWork_expModal').modal("hide");
 		var content = tinymce.get('editWork_expContent').getContent();
 		var id = $('#editWork_expModal').data('id');
+		console.log(content + ": " + id);
+		$.post('<?= site_url('main/ajax_updateDetail') ?>', {
+			'tableName': 'work_exp',
+			'id': id,
+			'detail': content
+		}, function(data) {
+			if (data.success == true) {
+				alert("บันทึกสำเร็จ");
+				location.reload(true);
+			}
+		}, "json");
+	});
+
+	$('#editWork_expModal2 .btn-success').on("click", function(e) {
+		$('#editWork_expModal2').modal("hide");
+		var content = tinymce.get('editWork_expContent2').getContent();
+		var id = $('#editWork_expModal2').data('id');
 		console.log(content + ": " + id);
 		$.post('<?= site_url('main/ajax_updateDetail') ?>', {
 			'tableName': 'work_exp',
@@ -676,6 +775,12 @@
 		tinymce.get('editPublicationContent').setContent(text);
 	});
 
+	$('#editPublicationModal2').on('show.bs.modal', function(e) {
+		$('#editPublicationModal2').data("id", $(e.relatedTarget).data("id"));
+		var text = $(e.relatedTarget).parent().prev().html();
+		tinymce.get('editPublicationContent2').setContent(text);
+	});
+
 
 	$('.sort-publication').on("click", function(e) {
 		e.preventDefault();
@@ -702,6 +807,23 @@
 		$('#editPublicationModal').modal("hide");
 		var content = tinymce.get('editPublicationContent').getContent();
 		var id = $('#editPublicationModal').data('id');
+		console.log(content + ": " + id);
+		$.post('<?= site_url('main/ajax_updateDetail') ?>', {
+			'tableName': 'publication',
+			'id': id,
+			'detail': content
+		}, function(data) {
+			if (data.success == true) {
+				alert("บันทึกสำเร็จ");
+				location.reload(true);
+			}
+		}, "json");
+	});
+
+	$('#editPublicationModal2 .btn-success').on("click", function(e) {
+		$('#editPublicationModal2').modal("hide");
+		var content = tinymce.get('editPublicationContent2').getContent();
+		var id = $('#editPublicationModal2').data('id');
 		console.log(content + ": " + id);
 		$.post('<?= site_url('main/ajax_updateDetail') ?>', {
 			'tableName': 'publication',
@@ -792,6 +914,12 @@
 		tinymce.get('editSkillContent').setContent(text);
 	});
 
+	$('#editSkillModal2').on('show.bs.modal', function(e) {
+		$('#editSkillModal2').data("id", $(e.relatedTarget).data("id"));
+		var text = $(e.relatedTarget).parent().prev().html();
+		tinymce.get('editSkillContent2').setContent(text);
+	});
+
 
 	$('.sort-skill').on("click", function(e) {
 		e.preventDefault();
@@ -818,6 +946,24 @@
 		$('#editSkillModal').modal("hide");
 		var content = tinymce.get('editSkillContent').getContent();
 		var id = $('#editSkillModal').data('id');
+		console.log(content + ": " + id);
+		$.post('<?= site_url('main/ajax_updateDetail') ?>', {
+			'tableName': 'skill',
+			'id': id,
+			'detail': content
+		}, function(data) {
+			if (data.success == true) {
+				alert("บันทึกสำเร็จ");
+				location.reload(true);
+			}
+		}, "json");
+	});
+
+
+	$('#editSkillModal2 .btn-success').on("click", function(e) {
+		$('#editSkillModal2').modal("hide");
+		var content = tinymce.get('editSkillContent2').getContent();
+		var id = $('#editSkillModal2').data('id');
 		console.log(content + ": " + id);
 		$.post('<?= site_url('main/ajax_updateDetail') ?>', {
 			'tableName': 'skill',
@@ -908,6 +1054,12 @@
 		tinymce.get('editTrainingContent').setContent(text);
 	});
 
+	$('#editTrainingModal2').on('show.bs.modal', function(e) {
+		$('#editTrainingModal2').data("id", $(e.relatedTarget).data("id"));
+		var text = $(e.relatedTarget).parent().prev().html();
+		tinymce.get('editTrainingContent2').setContent(text);
+	});
+
 
 	$('.sort-training').on("click", function(e) {
 		e.preventDefault();
@@ -947,6 +1099,22 @@
 		}, "json");
 	});
 
+	$('#editTrainingModal2 .btn-success').on("click", function(e) {
+		$('#editTrainingModal2').modal("hide");
+		var content = tinymce.get('editTrainingContent2').getContent();
+		var id = $('#editTrainingModal2').data('id');
+		console.log(content + ": " + id);
+		$.post('<?= site_url('main/ajax_updateDetail') ?>', {
+			'tableName': 'training',
+			'id': id,
+			'detail': content
+		}, function(data) {
+			if (data.success == true) {
+				alert("บันทึกสำเร็จ");
+				location.reload(true);
+			}
+		}, "json");
+	});
 
 	//-------------------------------- End Skills --------------------------------//
 

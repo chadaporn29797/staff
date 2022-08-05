@@ -1,3 +1,26 @@
+<!--editScholarships modal -->
+<div class="modal fade" id="editScholarshipModal2" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Edit Scholarship</h4>
+      </div>
+      <div class="modal-body">
+        <textarea id="editScholarshipContent2" name="editScholarshipContent2"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success btn-default pull-left">บันทึก</button>
+        <button class="btn btn-primary btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+      </div>
+      <!--end modal footer-->
+    </div>
+    <!--end modal content-->
+  </div>
+  <!--end modal dialog-->
+</div>
+<!--end editScholarship modal-->
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div class="app-content content">
@@ -23,88 +46,57 @@
 
     <div class="content-body">
       <!-- Line Awesome section start -->
-      <section id="line-awesome-icons">
-        <div class="row">
+      <section id="header-footer">
+        <div class="row match-height">
+
+
           <div class="col-12">
+
             <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">ข้อมูลทุนการศึกษา</h4>
-                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
-                  <ul class="list-inline mb-0">
-                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                    <!-- <li><a data-action="close"><i class="ft-x"></i></a></li> -->
-                  </ul>
-                </div>
-              </div>
+              <div class="card-content">
+                <div class="card-body">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4>
+                        <span id="scholarship" class='dashboard-title'>ข้อมูลทุนการศึกษา</span>
+                    </div>
+                    </h4>
+                  </div>
+                  <div class="card-content">
+                    <div class="card-body">
+                      <?php foreach ($scholarships as $scholarship) : ?>
+                        <div class="row">
+                          <div class="col-md-10"><?= $scholarship->detail ?></div>
 
+                          <div class="col-md-2">
+                            <a href='#editScholarshipModal2' data-toggle='modal' data-id='<?= $scholarship->id ?>'><i class="fa fa-pencil"></i></a>
+                            <a href='#' class="delete-scholarship" data-id='<?= $scholarship->id ?>'><i class="fa fa-remove"></i></a>
+                            <a href='#' class="sort-scholarship" data-direction="up" data-sort-order="<?= $scholarship->sortOrder ?>" data-id='<?= $scholarship->id ?>'><i class="fa fa-angle-double-up"></i></a>
+                            <a href='#' class="sort-scholarship" data-direction="down" data-sort-order="<?= $scholarship->sortOrder ?>" data-id='<?= $scholarship->id ?>'><i class="fa fa-angle-double-down"></i></a>
+                          </div>
 
-              <div class="ml-6">
-                <!--start content -->
-                <br>
-                <div class="clearfix"></div>
-
-                  <div class="row">
-                    <div class="col-md-12 col-sm-12 ">
-                      <div class="x_panel">
-
-                        <div class="x_content mr-5">
-                          <!--start content -->
-                          <table class="table table-bordered ml-3 mr-3 ">
-                            <thead>
-                              <tr>
-                                <th>#</th>
-                                <th>รายละเอียด</th>
-                                <th>#</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php $counter = 0; ?>
-                              <?php foreach ($scholarships as $e) : ?>
-
-                                <tr>
-                                  <th scope="row"><?= ++$counter ?></th>
-                                  <td><?= $e->detail ?></td>
-                                  <td>
-                                    <a href='<?= site_url('main/edit_education/' . $e->educationID) ?>'>
-                                      <i class="fa fa-wrench"></i>
-                                    </a>
-                                    <a href='#' class="delete-scholarship2" data-id='<?= $e->id ?>'><i class="fa fa-remove"></i></a>
-                                    <a href='#' class="sort-scholarship" data-direction="up" data-sort-order="<?= $e->sortOrder ?>" data-id='<?= $e->id ?>'><i class="fa fa-angle-double-up"></i></a>
-                                    <a href='#' class="sort-scholarship" data-direction="down" data-sort-order="<?= $e->sortOrder ?>" data-id='<?= $e->id ?>'><i class="fa fa-angle-double-down"></i></a>
-
-                                  </td>
-                                </tr>
-                              <?php endforeach; ?>
-
-                            </tbody>
-                          </table>
-                          <!--- end content -->
-                          <br>
-                        </div> <!-- end x-content -->
-                      </div>
-                      <!--end x-panel-->
+                        </div>
+                      <?php endforeach; ?>
                     </div>
                   </div>
-                  <!--end row-->
-
-                <!--- end content -->
-
+                </div>
               </div>
-
-
-
             </div>
+
+
+
+
           </div>
         </div>
-      </section>
+
+    </div>
+    </section>
       <section id="line-awesome-icons">
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">เพิ่มทุนการศึกษา</h4>
+                <h4 class="card-title dashboard-title" id="scholarship2">เพิ่มทุนการศึกษา</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="list-inline mb-0">
