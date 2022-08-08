@@ -31,6 +31,10 @@ class UserModel extends CI_Model {
 			return $query->result();
         }
 
+		public function insert($arr=""){
+            if($arr!="") $this->db->insert('user', $arr);
+        }
+
 		public function getEdu($arr=""){
 			$this->db->select('*');
 			$this->db->from('education');
@@ -287,6 +291,15 @@ class UserModel extends CI_Model {
 					 $this->db->delete($this->input->post('tableName'));
 		  }
 
+		  public function delete($where=""){
+			if($where != ""){
+				for($i=0; $i< count($where); $i++){
+					$this->db->where($where[$i]); 
+				}
+				$this->db->delete('user'); 
+			}
+		}
+
 
 //-------------End Eduction ------------------------//
 
@@ -465,6 +478,7 @@ class UserModel extends CI_Model {
 					 $this->session->set_userdata("lastName",$info->sirNameTH_em);
 					 $this->session->set_userdata("name",$info->forName.$info->nameTH_em." ".$info->sirNameTH_em);
 					 $this->session->set_userdata("avatar",$info->avatar);
+					 $this->session->set_userdata("role",$info->role);
 
            //This should be move in the future , Nattapong 24/06/2017
 			  //For Responsive FileManager,Tinymce plugins create a files directory if not exists

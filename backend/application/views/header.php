@@ -151,8 +151,12 @@
                 </li>
                 <li class=" nav-item"><a href="<?= site_url('main/document') ?>"><i class="la la-bullhorn"></i><span class="menu-title" data-i18n="">คำสั่ง</span></a>
                 </li>
+                <?php if ($info->role == 1 ) : ?>
+                
                 <li class=" nav-item"><a href="<?= site_url('main/users') ?>"><i class="la la-user-plus"></i><span class="menu-title" data-i18n="">จัดการผู้ใช้งาน</span></a>
                 </li>
+                <?php endif; ?>
+
 
             </ul>
         </div>

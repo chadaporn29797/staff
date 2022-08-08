@@ -1145,4 +1145,39 @@
 
 
 	});
+
+
+	$('.delete-user').click(function(e) {
+		e.preventDefault();
+		var target = $(this);
+		var id = $(this).data("id");
+		$.ajax({
+			type: 'POST',
+			url: '<?php echo base_url(); ?>index.php/main/del_user/' + id,
+			cache: false,
+			success: function(data) {
+				if (data) {
+					alert("ลบสำเร็จ");
+					$(target).closest('tbody tr').remove();
+					// location.reload(true);
+				}
+			}
+		});
+	});
+
+	function del_user(vid) {
+		var target = $(this);
+		$.ajax({
+			type: 'POST',
+			url: '<?php echo base_url(); ?>index.php/main/del_user/' + vid,
+			cache: false,
+			success: function(data) {
+				if (data) {
+					alert("ลบสำเร็จ");
+					// $(target).closest('tbody tr').remove();
+					location.reload(true);
+				}
+			}
+		});
+	}
 </script>

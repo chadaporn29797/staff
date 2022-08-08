@@ -39,7 +39,7 @@
                       <input type="text" class="form-control" placeholder="ค้นหาชื่อผู้ใช้">
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button">ค้นหา</button>
-                        <a href="#addUser" data-toggle="modal"><button class="btn btn-success" type="button">เพิ่มผู้ใช้</button></a>
+                        <a href="<?= site_url('main/add_user') ?>"><button class="btn btn-success" type="button">เพิ่มผู้ใช้</button></a>
                       </span>
                     </div>
 
@@ -81,7 +81,8 @@
                                   <a href='<?= site_url('main/edit_education/' . $e->educationID) ?>'>
                                     <i class="fa fa-wrench"></i>
                                   </a>
-                                  <a href='#' class="delete-education2" data-id='<?= $e->id ?>'><i class="fa fa-remove"></i></a>
+                                  <a href='#' class="delete-user" data-id='<?= $e->userID ?>'><i class="fa fa-remove"></i></a>
+                                  <!-- <td><button type="button" class="delete-user2" onclick='del_user("<?= $e->userID ?>");'><i class="fa fa-trash"></i></button></td> -->
                                   <!-- <a href='#' class="sort-education" data-direction="up" data-sort-order="<?= $e->sortOrder ?>" data-id='<?= $e->id ?>'><i class="fa fa-angle-double-up"></i></a>
                                     <a href='#' class="sort-education" data-direction="down" data-sort-order="<?= $e->sortOrder ?>" data-id='<?= $e->id ?>'><i class="fa fa-angle-double-down"></i></a> -->
 

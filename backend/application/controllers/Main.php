@@ -371,9 +371,53 @@ class Main extends CI_Controller {
 		}
 	}
 
-	
+	public function add_user($userID=null,$id=-1){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$this->load->model("UserModel");
+			$this->load->model("DepartmentModel");
+
+
+			if($userID == null )
+ 				$userID =  $this->session->userdata("userID") ;
+
+			$data["info"]= $this->UserModel->getUserInfo();
+			$data["deps"]= $this->DepartmentModel->getQuery();
+
+			$data["userID"] = $userID;
+			$data["educationID"] = $id;
+			if( $id != -1)
+			  $data["educationIfo"] = $this->UserModel->getEducationInfo($id);
+		    $this->load->view('header',$data);
+			$this->load->view('add_user',$data);
+			$this->load->view('footer');
+			$this->load->view('dashboard_js',$data);
+		}
+	}
 
 	
+
+	public function add_user2()
+	{
+		$this->load->model("UserModel");
+
+		$vdata = array(
+			"nameTH_em" => $this->input->post("nameTH_em"),
+			"sirNameTH_em" => $this->input->post("sirNameTH_em"),
+			"username" => $this->input->post("username"),
+			"departmentID_em" => $this->input->post("departmentID_em"),
+			"role" => $this->input->post("role"),
+			"email" => $this->input->post("email"),
+			"ubu_mail" => $this->input->post("ubu_mail"),
+		);
+
+		$this->UserModel->insert($vdata);
+		redirect(base_url("index.php/main/users"), 'refresh');
+	}
 
 	public function userinfo($userID){
 		$this->load->model("UserModel");
@@ -435,6 +479,22 @@ class Main extends CI_Controller {
 		$query= $this->UserModel->deleteDetail();
 		echo json_encode( array( "success"=> true) );
 
+	}
+
+	public function ajax_deleteUser(){
+		header('Content-Type: application/json; charset=utf-8');	
+		$this->load->model("UserModel");
+		$query= $this->UserModel->deleteUser();
+		echo json_encode( array( "success"=> true) );
+
+	}
+
+	public function del_user($param1 = "")
+	{
+		$this->load->model("UserModel");
+		$vdata = array("userID=" . $param1);
+		$this->UserModel->delete($vdata);
+		echo json_encode( array( "success"=> true) );
 	}
 
 	public function ajax_removeCommittee(){
@@ -737,6 +797,8 @@ class Main extends CI_Controller {
 			$this->load->view('users',$data);
 			$this->load->view('footer');
 			$this->load->view('groups_js',$data);
+			$this->load->view('dashboard_js',$data);
+
 		}
 	}
 
@@ -879,7 +941,9 @@ class Main extends CI_Controller {
 			$this->UserModel->setUserInfo();
 		}
 		if(null != $this->input->post("userID")  ){
-			redirect(site_url('main/userinfo/'.$this->input->post("userID") ));
+			// redirect(site_url('main/userinfo/'.$this->input->post("userID") ));
+			redirect(site_url('main/dashboard'));
+
 		}
 		else{
 			redirect(site_url('main/dashboard'));
