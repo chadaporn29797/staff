@@ -298,7 +298,15 @@ class UserModel extends CI_Model {
 				}
 				$this->db->delete('user'); 
 			}
-		}
+		  }
+		  public function update($arr="", $where=""){
+			if($arr != "" AND $where != ""){
+				for($i=0; $i< count($where); $i++){
+					$this->db->where($where[$i]); 
+				}
+				$this->db->update('user', $arr); 
+			}
+          }
 
 
 //-------------End Eduction ------------------------//

@@ -117,7 +117,7 @@
                   <div class="form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                       <button type="submit" class="btn btn-success">บันทึก</button>
-                      <a href='<?= site_url("main/users") ?>' class="btn btn-primary" type="button">ยกเลิก</a>
+                      <button onclick="history.back()" type="button" class="btn btn-primary">ยกเลิก</button>
                     </div>
                   </div>
 

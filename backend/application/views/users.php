@@ -60,7 +60,7 @@
 
                       <div class="x_content mr-5">
                         <!--start content -->
-                        <table class="table table-bordered ml-3 mr-3 ">
+                        <table class="table table-bordered ml-3 mr-3 " id="data">
                           <thead>
                             <tr>
                               <th style=' width:5%;'>#</th>
@@ -78,7 +78,7 @@
                                 <td><?= $e->username ?></td>
                                 <td>เจ้าหน้าที่</td>
                                 <td>
-                                  <a href='<?= site_url('main/edit_education/' . $e->educationID) ?>'>
+                                  <a href='<?= site_url('main/edit_user/' . $e->userID) ?>'>
                                     <i class="fa fa-wrench"></i>
                                   </a>
                                   <a href='#' class="delete-user" data-id='<?= $e->userID ?>'><i class="fa fa-remove"></i></a>
@@ -105,45 +105,40 @@
 
               </div>
 
-
-
             </div>
           </div>
         </div>
       </section>
 
-      <!--Add New Activity modal -->
-      <div class="modal fade" id="addUser" role="dialog" style="overflow-y: initial !important">
-        <div class="modal-dialog modal-lg">
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4>เพิ่มผู้ใช้งาน</h4>
-            </div>
+<script>
+  $(document).ready(function() {
+    		$('#data').after('<div class="pull-right m-1 " id="nav"></div>');
+    		var rowsShown = 10;
+    		var rowsTotal = $('#data tbody tr').length;
+    		var numPages = rowsTotal / rowsShown;
+    		for (i = 0; i < numPages; i++) {
+    			var pageNum = i + 1;
+    			$('#nav').append('<a href="#'+i+'" rel="' + i + '">' + pageNum + '</a> ');
+    		}
+    		$('#data tbody tr').hide();
+    		$('#data tbody tr').slice(0, rowsShown).show();
+    		$('#data thead tr').show();
+    		$('#nav a:first').addClass('active');
+    		$('#nav a').bind('click', function() {
 
-            <div class="modal-body" style="">
+    			$('#nav a').removeClass('active');
+    			$(this).addClass('active');
+    			var currPage = $(this).attr('rel');
+    			var startItem = currPage * rowsShown;
+    			var endItem = startItem + rowsShown;
+    			$('#data tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
+    			css('display', 'table-row').animate({
+    				opacity: 1
+    			}, 300);
+    		});
+    	});
+</script>
 
-              <div class="form-group">
-                <label class="control-label" for="activity-title">ชื่อผู้ใช้</label>
-                <input type="text" id="activity-title" class="form-control">
-              </div>
+<style>
 
-              <div class="form-group">
-                <label class="control-label" for="activity-text">หน้าที่</label>
-                <textarea id="activity-text" class="form-control" rows="3"></textarea>
-              </div>
-
-
-            </div>
-            <!--end modal -body -->
-            <div class="modal-footer">
-              <button id='save-activity-btn' data-action="insert" data-id="-1" class="btn btn-success btn-default pull-left">บันทึก</button>
-              <button class="btn btn-primary btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
-            </div>
-            <!--end modal footer-->
-          </div>
-          <!--end modal content-->
-        </div>
-        <!--end modal dialog-->
-      </div>
-      <!--end add new Activity modal-->
+</style>

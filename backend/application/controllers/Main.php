@@ -419,6 +419,108 @@ class Main extends CI_Controller {
 		redirect(base_url("index.php/main/users"), 'refresh');
 	}
 
+	public function edit_user($userID=null){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$this->load->model("UserModel");
+			$this->load->model("DepartmentModel");
+
+
+			if($userID == null )
+ 				$userID =  $this->session->userdata("userID") ;
+
+			$data["info"]= $this->UserModel->getUserInfo();
+			$data["deps"]= $this->DepartmentModel->getQuery();
+			$data['users'] = $this->UserModel->getQuery(array("userID=" . $userID));
+
+			$data["userID"] = $userID;
+			
+		    $this->load->view('header',$data);
+			$this->load->view('edit_user',$data);
+			$this->load->view('footer');
+			$this->load->view('dashboard_js',$data);
+		}
+	}
+
+	public function edit_user2($vid)
+	{
+		$this->load->model("UserModel");
+		$vdata = array(
+			"nameTH_em" => $this->input->post("nameTH_em"),
+			"sirNameTH_em" => $this->input->post("sirNameTH_em"),
+			"username" => $this->input->post("username"),
+			"departmentID_em" => $this->input->post("departmentID_em"),
+			"role" => $this->input->post("role"),
+			"email" => $this->input->post("email"),
+			"ubu_mail" => $this->input->post("ubu_mail"),
+		);
+
+		$where = array(
+			"userID =" . $vid
+		);
+		$this->UserModel->update($vdata, $where);
+		redirect(base_url("index.php/main/edit_user/" . $vid), 'refresh');
+	}
+
+	public function edit_userAll($userID=null){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$this->load->model("UserModel");
+			$this->load->model("DepartmentModel");
+
+
+			if($userID == null )
+ 				$userID =  $this->session->userdata("userID") ;
+
+			$data["info"]= $this->UserModel->getUserInfo();
+			$data["deps"]= $this->DepartmentModel->getQuery();
+			$data['users'] = $this->UserModel->getQuery(array("userID=" . $userID));
+
+			$data["userID"] = $userID;
+			
+		    $this->load->view('header',$data);
+			$this->load->view('edit_userAll',$data);
+			$this->load->view('footer');
+			$this->load->view('dashboard_js',$data);
+		}
+	}
+
+	public function edit_userAll2($vid)
+	{
+		$this->load->model("UserModel");
+		$vdata = array(
+			"nameTH_em" => $this->input->post("nameTH_em"),
+			"sirNameTH_em" => $this->input->post("sirNameTH_em"),
+			"username" => $this->input->post("username"),
+			"departmentID_em" => $this->input->post("departmentID_em"),
+			"role" => $this->input->post("role"),
+			"email" => $this->input->post("email"),
+			"ubu_mail" => $this->input->post("ubu_mail"),
+			"forName" => $this->input->post("forName"),
+			"forNameENG" => $this->input->post("forNameENG"),
+			"nameENG" => $this->input->post("nameENG"),
+			"sirNameENG" => $this->input->post("sirNameENG"),
+			"roomNumber" => $this->input->post("roomNumber"),
+			"tel" => $this->input->post("tel"),
+			"mobile" => $this->input->post("mobile"),
+		);
+
+		$where = array(
+			"userID =" . $vid
+		);
+		$this->UserModel->update($vdata, $where);
+		redirect(base_url("index.php/main/edit_userAll/" . $vid), 'refresh');
+	}
+
+
 	public function userinfo($userID){
 		$this->load->model("UserModel");
 		$data["userID"] = $userID ;
