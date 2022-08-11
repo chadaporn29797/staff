@@ -826,6 +826,23 @@ class Main extends CI_Controller {
 		}
 	}
 
+	public function print_option($userID=null){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+			
+		 $userID = $this->session->userdata("userID");
+		 $this->load->model("UserModel");
+		 $data["userID"] = $userID ;
+		 $data["info"]= $this->UserModel->getUserInfo($userID);
+		 $this->load->view('header',$data);
+		 $this->load->view('print_option',$data);
+		 $this->load->view('footer');
+		}
+	}
+
 	public function research(){
 		if( null === $this->session->userdata("userID")){
 			$this->load->helper('form');
@@ -897,6 +914,29 @@ class Main extends CI_Controller {
 			$data["users"]= $this->UserModel->getQuery();
 			$this->load->view('header',$data);
 			$this->load->view('users',$data);
+			$this->load->view('footer');
+			$this->load->view('groups_js',$data);
+			$this->load->view('dashboard_js',$data);
+
+		}
+	}
+
+	public function users_search($key){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+
+			$userID = $this->session->userdata("userID");
+			$this->load->model("UserModel");
+			$data["userID"] = $userID ;
+			$data["info"]= $this->UserModel->getUserInfo($userID);
+			$data["users"]= $this->UserModel->getQuery();
+			$data["users2"]= $this->UserModel->getQuery(array("username like '%" . $key ."%'"));
+			$data["key"]= $key;
+			$this->load->view('header',$data);
+			$this->load->view('users_search',$data);
 			$this->load->view('footer');
 			$this->load->view('groups_js',$data);
 			$this->load->view('dashboard_js',$data);

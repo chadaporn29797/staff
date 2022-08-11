@@ -436,18 +436,14 @@
                   </li>
                 </ul>
 
-                <a class="btn btn-success" href="<?= site_url('main/edit_profile') ?>"> <i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
-                <br>
                 </p>
               </div>
-              <!-- <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
-                <span class="float-left">แก้ไขเมื่อ 3 hours ago</span>
+              <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
+                <a class="btn btn-success" href="<?= site_url('main/edit_profile') ?>"> <i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
                 <span class="float-right">
-                  <a href="<?= site_url('main/edit_profile') ?>" class="card-link">edit
-                    <i class="la la-angle-right"></i>
-                  </a>
+                  <a class="btn btn-dark" href="<?= site_url('main/print_option') ?>"> <i class="la la-print m-right-xs"></i>Print CV</a>
                 </span>
-              </div> -->
+              </div>
             </div>
           </div>
 
@@ -486,19 +482,19 @@
 
 
             <div class="card">
-            <div class="card-content">
-            <div class="card-body">
-                <div class="panel-heading">
-                  <h4><a href="#editOverviewModal" data-toggle="modal"><i class="fa fa-edit m-right-xs"></i></a>
-                    <span id="overview" class='dashboard-title'>Research Overview</span>
-                  </h4>
-                </div>
-                <div class="panel-body">
-                  <?= $info->description ?>
-                </div>
-                </div>
+              <div class="card-content">
+                <div class="card-body">
+                  <div class="panel-heading">
+                    <h4><a href="#editOverviewModal" data-toggle="modal"><i class="fa fa-edit m-right-xs"></i></a>
+                      <span id="overview" class='dashboard-title'>Research Overview</span>
+                    </h4>
+                  </div>
+                  <div class="panel-body">
+                    <?= $info->description ?>
+                  </div>
                 </div>
               </div>
+            </div>
 
             <div class="card">
               <div class="card-content">

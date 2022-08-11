@@ -38,13 +38,15 @@
                   <form>
 
                   <div class="input-group">
-                    <input type="text" class="form-control" id="uuu" placeholder="ค้นหาชื่อผู้ใช้">
+                    <input type="text" class="form-control" id="uuu"  placeholder="ค้นหาชื่อผู้ใช้">
                     <span class="input-group-btn">
                       <button id="sb" class="btn btn-default" onclick="goto(uuu.val)" type="button">ค้นหา</button>
                       <a href="<?= site_url('main/add_user') ?>"><button class="btn btn-success" type="button">เพิ่มผู้ใช้</button></a>
                     </span>
                   </div>
                   </form>
+                  <h4 class="card-title  pull-right ">ผลการค้นหา "<?php echo $key; ?>"</h4>
+                 
 
                 </div>
               </div>
@@ -73,7 +75,7 @@
                           </thead>
                           <tbody>
                             <?php $counter = 0; ?>
-                            <?php foreach ($users as $e) : ?>
+                            <?php foreach ($users2 as $e) : ?>
 
                               <tr>
                                 <th scope="row"><?= ++$counter ?></th>
@@ -125,7 +127,7 @@
           var numPages = rowsTotal / rowsShown;
           for (i = 0; i < numPages; i++) {
             var pageNum = i + 1;
-            $('#nav').append('<a href="#' + (i+1) + '" rel="' + i + '">' + pageNum + '</a> ');
+            $('#nav').append('<a href="#' + i + '" rel="' + i + '">' + pageNum + '</a> ');
           }
           $('#data tbody tr').hide();
           $('#data tbody tr').slice(0, rowsShown).show();
@@ -145,17 +147,13 @@
           });
         });
 
+
         $("#sb").click(function(e) {
           e.preventDefault();
           // alert($("#uuu").val());
           window.location = "<?php echo base_url(); ?>index.php/main/users_search/" + $("#uuu").val();
 
         });
-        // function goto(name){
-        //   window.location = "<?php echo base_url(); ?>index.php/main/users_search/" +name;
-
-        // }
-
       </script>
 
       <style>
