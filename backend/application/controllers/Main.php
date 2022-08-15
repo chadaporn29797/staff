@@ -839,7 +839,34 @@ class Main extends CI_Controller {
 		 $data["info"]= $this->UserModel->getUserInfo($userID);
 		 $this->load->view('header',$data);
 		 $this->load->view('print_option',$data);
-		 $this->load->view('footer');
+		 $this->load->view('footer2');
+		}
+	}
+
+	public function cv($userID=null){
+		if( null === $this->session->userdata("userID")){
+			$this->load->helper('form');
+			$this->load->view('login.php');
+		}
+		else{
+			
+		 $userID = $this->session->userdata("userID");
+		 $this->load->model("UserModel");
+		 $this->load->model("EducationModel");
+		 $this->load->model("DetailModel");
+		 $data['users'] = $this->UserModel->getQuery(array("userID=" . $userID));
+		 $data['education'] = $this->EducationModel->getQuery(array("userID=" . $userID));
+		 $data['award'] = $this->DetailModel->getQueryAwards(array("userID=" . $userID));
+		 $data['scholarship'] = $this->DetailModel->getQueryScholarships(array("userID=" . $userID));
+		 $data['working'] = $this->DetailModel->getQueryWorking(array("userID=" . $userID));
+		 $data['publication'] = $this->DetailModel->getQueryPublications(array("userID=" . $userID));
+		 $data['skill'] = $this->DetailModel->getQuerySkills(array("userID=" . $userID));
+		 $data['training'] = $this->DetailModel->getQueryTrainings(array("userID=" . $userID));
+		 $data["userID"] = $userID ;
+		 $data["info"]= $this->UserModel->getUserInfo($userID);
+		//  $this->load->view('header',$data);
+		 $this->load->view('cv',$data);
+		//  $this->load->view('footer2');
 		}
 	}
 

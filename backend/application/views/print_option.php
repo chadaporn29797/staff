@@ -43,91 +43,75 @@
                 <form method="POST" action="<?= site_url('main/save_profile') ?>" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
                   <input type="hidden" name="userID" value="<?= $userID ?>" />
                   <div class="form-row">
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-4">
                       <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                        <input class="icheckbox_flat-green " type="checkbox"   id="chkSelectAll">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">ทั้งหมด</label>
                       </div>
                     </div>
-                    <div class="form-group col-md-5">
-                      <label class="control-label " for="firstName">ชื่อภาษาไทย<span class="required">*</span>
-                      </label>
-                      <div class="  ">
-                        <input type="text" id="firstName" name="firstName" required="required" class="form-control " value="<?= $info->nameTH_em ?>">
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green" type="checkbox"  id="toggle" checked disabled>
+                        <label class="form-check-label" for="flexSwitchCheckDefault">ข้อมูลพื้นฐาน</label>
                       </div>
                     </div>
 
-                    <div class="form-group col-md-5">
-                      <label class="control-label " for="last-name">นามสกุล <span class="required">*</span>
-                      </label>
-                      <div class=" mr-1 ">
-                        <input type="text" id="lastName" name="lastName" required="required" class="form-control " value="<?= $info->sirNameTH_em ?>">
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green" type="checkbox"  id="toggle" checked disabled>
+                        <label class="form-check-label" for="flexSwitchCheckDefault">ประวัติการศึกษา</label>
                       </div>
                     </div>
                   </div>
 
                   <div class="form-row">
-                    <div class="form-group col-md-2">
-                      <label class="control-label ml-1  " for="forNameENG">คำนำหน้า(ENG)
-                      </label>
-                      <div class=" ml-1 ">
-                        <input type="text" id="forNameENG" name="forNameENG" required="required" class="form-control " value="<?= $info->forNameENG ?>">
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green dd" type="checkbox"  id="toggle">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">รางวัลและเกียรติยศ</label>
                       </div>
                     </div>
-                    <div class="form-group col-md-5">
-                      <label class="control-label " for="firstNameENG">ชื่อ(ENG)
-                      </label>
-                      <div class="  ">
-                        <input type="text" id="firstNameENG" name="firstNameENG" class="form-control " value="<?= $info->nameENG ?>">
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green dd" type="checkbox"  id="toggle">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">ทุนการศึกษา</label>
                       </div>
                     </div>
 
-                    <div class="form-group col-md-5">
-                      <label class="control-label " for="last-name">นามสกุล(ENG)
-                      </label>
-                      <div class=" mr-1 ">
-                        <input type="text" id="lastNameENG" name="lastNameENG" class="form-control " value="<?= $info->sirNameENG ?>">
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green dd" type="checkbox"  id="toggle">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">ประสบการณ์การทำงาน</label>
                       </div>
                     </div>
                   </div>
 
                   <div class="form-row">
-                    <div class="form-group col-md-5">
-                      <label class="control-label ml-1">หมายเลขห้องพัก/อาคาร</label>
-                      <div class="ml-1">
-                        <input id="roomNumber" name="roomNumber" value="<?= $info->roomNumber ?>" class=" form-control " required="required" type="text">
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green dd" type="checkbox"  id="toggle">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">ผลงานตีพิมพ์</label>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green dd" type="checkbox"  id="toggle">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">ทักษะอื่นๆ</label>
                       </div>
                     </div>
 
-                    <div class="form-group col-md-5">
-                      <label class="control-label ">โทรศัพท์ภายใน </label>
-                      <div class="">
-                        <input id="tel" name="tel" value="<?= $info->tel ?>" class=" form-control " required="required" type="text">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group col-md-5">
-                      <label class="control-label ml-1">โทรศัพท์มือถือ</label>
-                      <div class="ml-1">
-                        <input id="mobile" name="mobile" value="<?= $info->mobile ?>" class=" form-control " required="required" type="text">
-                      </div>
-                    </div>
-
-                    <div class="form-group col-md-5">
-                      <label class="control-label " for="first-name">email<span class="required"> </span></label>
-                      <div class="">
-                        <input id="email" name="email" value="<?= $info->email ?>" class=" form-control " required="required" type="text">
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green dd" type="checkbox"  id="toggle">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">การฝึกอบรม</label>
                       </div>
                     </div>
                   </div>
-
 
                   <div class="ln_solid"></div>
                   <div class="form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                      <button type="submit" class="btn btn-success">บันทึก</button>
+                      <button type="submit" class="btn btn-success">ดูตัวอย่าง</button>
                       <a href='<?= site_url("main/dashboard") ?>' class="btn btn-primary" type="button">ยกเลิก</a>
                     </div>
                   </div>
@@ -142,3 +126,9 @@
         </div>
       </section>
       <!-- // Line Awesome section end -->
+
+<script>
+    $("#chkSelectAll").on('click', function(){
+     this.checked ? $(".dd").prop("checked",true) : $(".dd").prop("checked",false);  
+})
+</script>

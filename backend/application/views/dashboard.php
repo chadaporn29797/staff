@@ -415,7 +415,7 @@
               <div class="profile_img w3-center ">
                 <div id="crop-avatar">
                   <!-- Current avatar -->
-                  <a href='<?= site_url('main/edit_picture') ?>'><img style=" display: inline-block;width: 150px;height: 150px;border-radius: 50%;background-repeat: no-repeat;background-position: center center;background-size: cover;" class="img-responsive avatar-view" src="<?= base_url("../avatars/" . $info->ubu_mail . ".png") . '?' . rand() ?>" title="Change the avatar"></a>
+                  <a href='<?= site_url('main/edit_picture') ?>'><img class="center" style=" display: inline-block;width: 150px;height: 150px;border-radius: 50%;background-repeat: no-repeat;background-position: center center;background-size: cover;" class="img-responsive avatar-view" src="<?= base_url("../avatars/" . $info->ubu_mail . ".png") . '?' . rand() ?>" title="Change the avatar"></a>
                 </div>
               </div>
               <div class="card-body">
@@ -693,3 +693,11 @@
     </section>
 
     <!-- // Line Awesome section end -->
+    <style>
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        /* width: 50%; */
+      }
+    </style>
