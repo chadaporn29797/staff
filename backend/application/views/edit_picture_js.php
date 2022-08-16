@@ -72,6 +72,8 @@ $('#save-btn').click(function(e){
 		  }
 	  }
 	  xhr.send(fd);
+    location.reload(true);
+
 
   }
 });

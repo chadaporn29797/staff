@@ -843,7 +843,7 @@ class Main extends CI_Controller {
 		}
 	}
 
-	public function cv($userID=null){
+	public function cv($userID=null,$way1=null,$way2=null,$way3=null,$way4=null,$way5=null,$way6=null,$way7=null){
 		if( null === $this->session->userdata("userID")){
 			$this->load->helper('form');
 			$this->load->view('login.php');
@@ -854,6 +854,17 @@ class Main extends CI_Controller {
 		 $this->load->model("UserModel");
 		 $this->load->model("EducationModel");
 		 $this->load->model("DetailModel");
+		 $this->load->model("DepartmentModel");
+
+		$data["way1"]= $way1;
+		$data["way2"]= $way2;
+		$data["way3"]= $way3;
+		$data["way4"]= $way4;
+		$data["way5"]= $way5;
+		$data["way6"]= $way6;
+		$data["way7"]= $way7;
+
+		 $data["deps"]= $this->DepartmentModel->getQuery();
 		 $data['users'] = $this->UserModel->getQuery(array("userID=" . $userID));
 		 $data['education'] = $this->EducationModel->getQuery(array("userID=" . $userID));
 		 $data['award'] = $this->DetailModel->getQueryAwards(array("userID=" . $userID));

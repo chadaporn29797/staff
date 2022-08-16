@@ -40,26 +40,26 @@
               <div class="ml-6">
                 <!--start content -->
                 <br>
-                <form method="POST" action="<?= site_url('main/save_profile') ?>" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                <!-- <form method="POST"  data-parsley-validate="" class="form-horizontal form-label-left" novalidate=""> -->
                   <input type="hidden" name="userID" value="<?= $userID ?>" />
                   <div class="form-row">
                     <div class="form-group col-md-4">
                       <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green " type="checkbox"   id="chkSelectAll">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">ทั้งหมด</label>
+                        <input class="icheckbox_flat-green " type="checkbox" id="chkSelectAll">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/dashboard') ?>">ทั้งหมด</a></label>
                       </div>
                     </div>
                     <div class="form-group col-md-4">
                       <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green" type="checkbox"  id="toggle" checked disabled>
-                        <label class="form-check-label" for="flexSwitchCheckDefault">ข้อมูลพื้นฐาน</label>
+                        <input class="icheckbox_flat-green" type="checkbox" id="toggle" checked disabled name="cb" value="ed">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_education') ?>">ประวัติการศึกษา</a></label>
                       </div>
                     </div>
 
                     <div class="form-group col-md-4">
                       <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green" type="checkbox"  id="toggle" checked disabled>
-                        <label class="form-check-label" for="flexSwitchCheckDefault">ประวัติการศึกษา</label>
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle"  name="cb" value="re">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/dashboard') ?>">งานวิจัยที่สนใจ</a></label>
                       </div>
                     </div>
                   </div>
@@ -67,21 +67,21 @@
                   <div class="form-row">
                     <div class="form-group col-md-4">
                       <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox"  id="toggle">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">รางวัลและเกียรติยศ</label>
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="aw">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_award') ?>">รางวัลและเกียรติยศ</a></label>
                       </div>
                     </div>
                     <div class="form-group col-md-4">
                       <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox"  id="toggle">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">ทุนการศึกษา</label>
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="sh">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_scholarship') ?>">ทุนการศึกษา</a></label>
                       </div>
                     </div>
 
                     <div class="form-group col-md-4">
                       <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox"  id="toggle">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">ประสบการณ์การทำงาน</label>
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="wo">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_work_exps') ?>">ประสบการณ์การทำงาน</a></label>
                       </div>
                     </div>
                   </div>
@@ -89,21 +89,21 @@
                   <div class="form-row">
                     <div class="form-group col-md-4">
                       <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox"  id="toggle">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">ผลงานตีพิมพ์</label>
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="pu">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_publication') ?>">ผลงานตีพิมพ์</a></label>
                       </div>
                     </div>
                     <div class="form-group col-md-4">
                       <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox"  id="toggle">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">ทักษะอื่นๆ</label>
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="sk">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_skill') ?>">ทักษะอื่นๆ</a></label>
                       </div>
                     </div>
 
                     <div class="form-group col-md-4">
                       <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox"  id="toggle">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">การฝึกอบรม</label>
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="tr">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_training') ?>">การฝึกอบรม</a></label>
                       </div>
                     </div>
                   </div>
@@ -111,12 +111,12 @@
                   <div class="ln_solid"></div>
                   <div class="form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                      <button type="submit" class="btn btn-success">ดูตัวอย่าง</button>
+                      <button onclick='vactive();' class="btn btn-success">ดูตัวอย่าง</button>
                       <a href='<?= site_url("main/dashboard") ?>' class="btn btn-primary" type="button">ยกเลิก</a>
                     </div>
                   </div>
 
-                </form>
+                <!-- </form> -->
                 <!--- end content -->
 
               </div>
@@ -127,8 +127,21 @@
       </section>
       <!-- // Line Awesome section end -->
 
-<script>
-    $("#chkSelectAll").on('click', function(){
-     this.checked ? $(".dd").prop("checked",true) : $(".dd").prop("checked",false);  
-})
-</script>
+      <script>
+        $("#chkSelectAll").on('click', function() {
+          this.checked ? $(".dd").prop("checked", true) : $(".dd").prop("checked", false);
+        })
+
+        function vactive() {
+
+          var markedCheckbox = document.getElementsByName('cb');
+          var res = "";
+          for (var checkbox of markedCheckbox) {
+            if (checkbox.checked) {
+              res += checkbox.value + '/';
+            }
+          }
+        
+          window.location = "<?php echo base_url(); ?>index.php/main/cv/"+ res;
+        }
+      </script>
