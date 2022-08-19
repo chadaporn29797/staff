@@ -8,7 +8,7 @@
     <meta name="description" content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
     <meta name="keywords" content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
-    <title>Sci staff dashboard | </title>
+    <title>Sci staff dashboard | CV</title>
     <link rel="apple-touch-icon" href="<?= base_url('chameleon') ?>/theme-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('chameleon') ?>/theme-assets/images/ico/sci_atomic.png">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
@@ -137,7 +137,7 @@
         </div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item"><a href="<?= site_url('main/dashboard') ?>"><i class="ft-home"></i><span class="menu-title" data-i18n="">หน้าหลัก</span></a>
+                <li class="nav-item"><a href="<?= site_url('main/dashboard') ?>"><i class="ft-home"></i><span class="menu-title" data-i18n="">หน้าหลัก</span></a>
                 </li>
                 <li class="nav-item"><a href="<?= site_url('main/edit_profile') ?>"><i class="ft-user"></i><span class="menu-title" data-i18n="">แก้ไขข้อมูลพื้นฐาน</span></a>
                 </li>

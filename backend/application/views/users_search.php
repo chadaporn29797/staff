@@ -79,7 +79,7 @@
 
                               <tr>
                                 <th scope="row"><?= ++$counter ?></th>
-                                <td><?= $e->username ?></td>
+                                <td><?= $e->nameTH_em ?> <?= $e->sirNameTH_em ?></td>
                                 <?php if ($e->role == 1) { ?>
                                   <td>แอดมิน</td>
                                 <?php } else if ($e->role == 2) { ?>
