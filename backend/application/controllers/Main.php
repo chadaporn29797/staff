@@ -1124,7 +1124,7 @@ class Main extends CI_Controller
 			$data["userID"] = $userID;
 			$data["info"] = $this->UserModel->getUserInfo($userID);
 			$data["users"] = $this->UserModel->getQuery();
-			$data["users2"] = $this->UserModel->getQuery(array("nameTH_em like '%" . $keyy . "%' OR "));
+			$data["users2"] = $this->UserModel->getQuery(array("nameTH_em like '%" . $keyy . "%' OR sirNameTH_em like '%" . $keyy . "%'"));
 			$data["key"] = $keyy;
 			$this->load->view('header', $data);
 			$this->load->view('users_search', $data);
