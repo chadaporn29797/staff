@@ -402,7 +402,37 @@ class Main extends CI_Controller
 		}
 	}
 
+	public function add_research()
+	{
+		$this->load->model("ResearchModel");
 
+		$vdata = array(
+			"id_project" => $this->input->post("id_project"),
+			"title" => $this->input->post("title"),
+			"budget_year" => $this->input->post("budget_year"),
+			"vstatus" => $this->input->post("vstatus"),
+			"user_id" => $this->input->post("user_id"),
+		);
+
+		$this->ResearchModel->insert($vdata);
+		redirect(base_url("index.php/main/research"), 'refresh');
+	}
+
+	public function add_public()
+	{
+		$this->load->model("ResearchModel");
+
+		$vdata = array(
+			"id_project" => $this->input->post("id_project"),
+			"title" => $this->input->post("title"),
+			"budget_year" => $this->input->post("budget_year"),
+			"vstatus" => $this->input->post("vstatus"),
+			"user_id" => $this->input->post("user_id"),
+		);
+
+		$this->ResearchModel->insert($vdata);
+		redirect(base_url("index.php/main/research"), 'refresh');
+	}
 
 	public function add_user2()
 	{
@@ -1043,9 +1073,12 @@ class Main extends CI_Controller
 
 			$userID = $this->session->userdata("userID");
 			$this->load->model("UserModel");
+			$this->load->model("ResearchModel");
 			$data["userID"] = $userID;
 			$data["info"] = $this->UserModel->getUserInfo($userID);
-			$data["users"] = $this->UserModel->getQuery();
+			$data["users"] = $this->UserModel->getQuery(array("userID =".$userID));
+			$data["researchON"] = $this->ResearchModel->getQuery(array("user_id =".$userID." AND vstatus='0'"));
+			$data["researchCOM"] = $this->ResearchModel->getQuery(array("user_id =".$userID." AND vstatus='1'"));
 			$this->load->view('header', $data);
 			$this->load->view('research', $data);
 			$this->load->view('footer');

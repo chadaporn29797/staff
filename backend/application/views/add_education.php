@@ -84,16 +84,11 @@
                 </div>
               </div>
             </div>
-
-
-
-
           </div>
         </div>
 
     </div>
     </section>
-
 
     <section id="line-awesome-icons">
       <div class="row">
@@ -121,11 +116,7 @@
               </div>
               <button id="addEducationContent_bt" class="btn btn-success btn-default pull-right m-2 mr-2">บันทึก</button>
               <br>
-
             </div>
-
-
-
 
           </div>
         </div>

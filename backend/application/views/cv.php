@@ -111,7 +111,7 @@
                   <?php } else if ($users[0]->language == "en") { ?>
                     <h3 class="text-uppercase resume-section-heading mb-4">Research interest</h3>
                   <?php } ?>
-                  <div class='item'>
+                  <div class="item-content">
                     <?php if ($users[0]->description == NULL) {
                       echo "ไม่มีข้อมูล";
                     } else {
@@ -132,7 +132,7 @@
                   <?php
                   $no = 0;
                   foreach ($award as $awa) { ?>
-                    <div>
+                    <div class="item-content">
                       <ul>
                         <li><?php echo $awa->detail; ?> </li>
                       </ul>
@@ -141,7 +141,7 @@
                     $no++;
                   }
                   if ($no == 0) { ?>
-                    <div>
+                    <div class="item-content">
                       <ul>
                         <li>ไม่มีข้อมูล</li>
                       </ul>
@@ -158,6 +158,7 @@
                   <?php } else if ($users[0]->language == "en") { ?>
                     <h3 class="text-uppercase resume-section-heading mb-4">Research grant</h3>
                   <?php } ?>
+                  <div class="item-content">
                   <?php
                   $no = 0;
                   foreach ($scholarship as $sch) { ?>
@@ -172,6 +173,7 @@
                       <li>ไม่มีข้อมูล</li>
                     </ul>
                   <?php } ?>
+                  </div>
                 <?php } ?>
               </section>
 
@@ -182,7 +184,7 @@
                   <?php } else if ($users[0]->language == "en") { ?>
                     <h3 class="text-uppercase resume-section-heading mb-4">Working experience</h3>
                   <?php } ?>
-
+                  <div class="item-content">
                   <?php
                   $no = 0;
                   foreach ($working as $work) { ?>
@@ -201,6 +203,7 @@
                       </ul>
                     </div>
                   <?php } ?>
+                  </div>
                 <?php } ?>
               </section>
 
@@ -212,7 +215,7 @@
                   <?php } else if ($users[0]->language == "en") { ?>
                     <h3 class="text-uppercase resume-section-heading mb-4">Publication</h3>
                   <?php } ?>
-
+                  <div class="item-content">
                   <?php
                   $no = 0;
                   foreach ($publication as $pub) { ?>
@@ -231,6 +234,7 @@
                       </ul>
                     </div>
                   <?php } ?>
+                  </div>
                 <?php } ?>
               </section>
 
@@ -242,7 +246,7 @@
                   <?php } else if ($users[0]->language == "en") { ?>
                     <h3 class="text-uppercase resume-section-heading mb-4">Skills</h3>
                   <?php } ?>
-
+                  <div class="item-content">
                   <?php
                   $no = 0;
                   foreach ($skill as $ski) { ?>
@@ -261,6 +265,7 @@
                       </ul>
                     </div>
                   <?php } ?>
+                  </div>
                 <?php } ?>
               </section>
 
@@ -272,7 +277,7 @@
                   <?php } else if ($users[0]->language == "en") { ?>
                     <h3 class="text-uppercase resume-section-heading mb-4">Trainings</h3>
                   <?php } ?>
-
+                  <div class="item-content">
                   <?php
                   $no = 0;
                   foreach ($training as $tra) { ?>
@@ -291,6 +296,7 @@
                       </ul>
                     </div>
                   <?php } ?>
+                  </div>
                 <?php } ?>
               </section>
 
@@ -302,7 +308,7 @@
           <!--//row-->
         </div>
         <!--//resume-body-->
-        <hr>
+        <hr class="d-print-none">
         <div class="d-print-none" data-aos="fade-left" data-aos-delay="200">
           <a class="btn btn-light text-dark shadow-sm mt-1 me-1" onclick='window.print()' target="_blank">Print this CV</a>
         </div>

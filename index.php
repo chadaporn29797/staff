@@ -156,11 +156,13 @@ $language = $row["language"];
                 if ($result->num_rows > 0) {
                 ?>
                   <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['award'][$language] ?></h3>
-                  <?php while ($award = $result->fetch_assoc()) : ?>
-                    <ul>
-                      <li><?= $award["detail"] ?> </li>
-                    </ul>
-                  <?php endwhile; ?>
+                  <div class="item-content">
+                    <?php while ($award = $result->fetch_assoc()) : ?>
+                      <ul>
+                        <li><?= $award["detail"] ?> </li>
+                      </ul>
+                    <?php endwhile; ?>
+                  </div>
                 <?php } ?>
               </section>
 
@@ -171,11 +173,13 @@ $language = $row["language"];
                 if ($result->num_rows > 0) {
                 ?>
                   <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['scholarship'][$language] ?></h3>
-                  <?php while ($scholarship = $result->fetch_assoc()) : ?>
-                    <ul>
-                      <li><?= $scholarship["detail"] ?> </li>
-                    </ul>
-                  <?php endwhile; ?>
+                  <div class="item-content">
+                    <?php while ($scholarship = $result->fetch_assoc()) : ?>
+                      <ul>
+                        <li><?= $scholarship["detail"] ?> </li>
+                      </ul>
+                    <?php endwhile; ?>
+                  </div>
                 <?php } ?>
               </section>
 
@@ -187,12 +191,14 @@ $language = $row["language"];
                 if ($result->num_rows > 0) {
                 ?>
                   <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['working'][$language] ?></h3>
-                  <?php while ($work_exp = $result->fetch_assoc()) : ?>
-                    <ul>
-                      <li><?= $work_exp["detail"] ?> </li>
-                    </ul>
+                  <div class="item-content">
+                    <?php while ($work_exp = $result->fetch_assoc()) : ?>
+                      <ul>
+                        <li><?= $work_exp["detail"] ?> </li>
+                      </ul>
 
-                  <?php endwhile; ?>
+                    <?php endwhile; ?>
+                  </div>
                 <?php } ?>
               </section>
 
@@ -203,63 +209,68 @@ $language = $row["language"];
                 if ($result->num_rows > 0) {
                 ?>
                   <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['publication'][$language] ?></h3>
-                  <?php while ($publication = $result->fetch_assoc()) : ?>
-                    <ol>
-                      <li><?= $publication["detail"] ?> </li>
-                    </ol>
+                  <div class="item-content">
+                    <?php while ($publication = $result->fetch_assoc()) : ?>
+                      <ol>
+                        <li><?= $publication["detail"] ?> </li>
+                      </ol>
+                    <?php endwhile; ?>
+                  </div><!-- //publication-->
+                <?php } ?>
+              </section>
+
+
+              <section class="work-section py-3">
+                <?php
+                $sql = "SELECT * FROM skill WHERE userID=$userID ORDER BY sortOrder ASC ";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                ?>
+                  <h3 class="text-uppercase resume-section-heading mb-4"><?= $titles['skill'][$language] ?></h3>
+                  <div class="item-content">
+                  <?php while ($skill = $result->fetch_assoc()) : ?>
+                    <ul>
+                      <li><?= $skill["detail"] ?> </li>
+                    </ul>
                   <?php endwhile; ?>
-            </div><!-- //publication-->
-          <?php } ?>
-          </section>
+                  </div>
+                <?php } ?>
+              </section>
 
 
-          <section class="work-section py-3">
-            <?php
-            $sql = "SELECT * FROM skill WHERE userID=$userID ORDER BY sortOrder ASC ";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-            ?>
-              <h3 class="text-uppercase resume-section-heading mb-4"><?= $titles['skill'][$language] ?></h3>
-              <?php while ($skill = $result->fetch_assoc()) : ?>
-                <ul>
-                  <li><?= $skill["detail"] ?> </li>
-                </ul>
-              <?php endwhile; ?>
-            <?php } ?>
-          </section>
+              <section class="work-section py-3">
+                <?php
+                $sql = "SELECT * FROM training WHERE userID=$userID ORDER BY sortOrder ASC ";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                ?>
+                  <h3 class="text-uppercase resume-section-heading mb-4"><?= $titles['training'][$language] ?></h3>
+                  <div class="item-content">
+                  <?php while ($training = $result->fetch_assoc()) : ?>
+                    <ul>
+                      <li><?= $training["detail"] ?> </li>
+                    </ul>
+                  <?php endwhile; ?>
+                  </div>
+                <?php } ?>
+              </section>
 
 
-          <section class="work-section py-3">
-            <?php
-            $sql = "SELECT * FROM training WHERE userID=$userID ORDER BY sortOrder ASC ";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-            ?>
-              <h3 class="text-uppercase resume-section-heading mb-4"><?= $titles['training'][$language] ?></h3>
-              <?php while ($training = $result->fetch_assoc()) : ?>
-                <ul>
-                  <li><?= $training["detail"] ?> </li>
-                </ul>
-              <?php endwhile; ?>
-            <?php } ?>
-          </section>
+              <!--//resume-main-->
 
-          
-          <!--//resume-main-->
+            </div>
+            <!--//row-->
+          </div>
+          <!--//resume-body-->
+          <hr>
+          <div class="d-print-none" data-aos="fade-left" data-aos-delay="200">
+            <a class="btn btn-light text-dark shadow-sm mt-1 me-1" onclick='window.print()' target="_blank">Print this CV</a>
+          </div>
+          <!--//resume-footer-->
+      </article>
 
-        </div>
-        <!--//row-->
     </div>
-    <!--//resume-body-->
-    <hr>
-    <div class="d-print-none" data-aos="fade-left" data-aos-delay="200">
-      <a class="btn btn-light text-dark shadow-sm mt-1 me-1" onclick='window.print()' target="_blank">Print this CV</a>
-    </div>
-    <!--//resume-footer-->
-    </article>
-
-  </div>
-  <!--//container-->
+    <!--//container-->
 
 
   </div>
