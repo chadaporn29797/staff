@@ -418,20 +418,63 @@ class Main extends CI_Controller
 		redirect(base_url("index.php/main/research"), 'refresh');
 	}
 
-	public function add_public()
+	public function add_article()
 	{
-		$this->load->model("ResearchModel");
+		$this->load->model("PublicationModel");
 
 		$vdata = array(
-			"id_project" => $this->input->post("id_project"),
+			"id_article" => $this->input->post("id_article"),
+			"abstract" => $this->input->post("abstract"),
+			"article_level" => $this->input->post("article_level"),
+			"journal_date" => $this->input->post("journal_date"),
+			"journal_db" => $this->input->post("journal_db"),
+			"journal_name" => $this->input->post("journal_name"),
+			"research_owner" => $this->input->post("research_owner"),
+			"journal_year" => $this->input->post("journal_year"),
 			"title" => $this->input->post("title"),
-			"budget_year" => $this->input->post("budget_year"),
+			"title_eng" => $this->input->post("title_eng"),
 			"vstatus" => $this->input->post("vstatus"),
+			"vstatus2" => $this->input->post("vstatus2"),
 			"user_id" => $this->input->post("user_id"),
 		);
 
-		$this->ResearchModel->insert($vdata);
+		$this->PublicationModel->insert($vdata);
 		redirect(base_url("index.php/main/research"), 'refresh');
+	}
+
+	public function del_research_article()
+	{
+		$this->load->model("PublicationModel");
+		$this->load->model("ResearchModel");
+
+		$vdata = array("user_id=" . $this->input->post("user_id"));
+		$this->PublicationModel->delete($vdata);
+		$this->ResearchModel->delete($vdata);
+	}
+
+	public function add_document()
+	{
+		$this->load->model("DocumentModel");
+
+		$vdata = array(
+			"document_id" => $this->input->post("document_id"),
+			"document_name" => $this->input->post("document_name"),
+			"document_type" => $this->input->post("document_type"),
+			"involved_name" => $this->input->post("involved_name"),
+			"no" => $this->input->post("no"),
+			"budget_year" => $this->input->post("budget_year"),
+			"user_id" => $this->input->post("user_id"),
+		);
+
+		$this->DocumentModel->insert($vdata);
+	}
+
+	public function del_document()
+	{
+		$this->load->model("DocumentModel");
+
+		$vdata = array("user_id=" . $this->input->post("user_id"));
+		$this->DocumentModel->delete($vdata);
 	}
 
 	public function add_user2()
@@ -963,107 +1006,6 @@ class Main extends CI_Controller
 		}
 	}
 
-	// public function pdf($userID = null, $way1 = null, $way2 = null, $way3 = null, $way4 = null, $way5 = null, $way6 = null, $way7 = null)
-	// {
-
-	// 	$this->load->library('Pdf');
-	// 	if (null === $this->session->userdata("userID")) {
-	// 		$this->load->helper('form');
-	// 		$this->load->view('login.php');
-	// 	} else {
-
-	// 		$userID = $this->session->userdata("userID");
-	// 		$this->load->model("UserModel");
-	// 		$this->load->model("EducationModel");
-	// 		$this->load->model("DetailModel");
-	// 		$this->load->model("DepartmentModel");
-
-	// 		$data["way1"] = $way1;
-	// 		$data["way2"] = $way2;
-	// 		$data["way3"] = $way3;
-	// 		$data["way4"] = $way4;
-	// 		$data["way5"] = $way5;
-	// 		$data["way6"] = $way6;
-	// 		$data["way7"] = $way7;
-
-	// 		$data["deps"] = $this->DepartmentModel->getQuery();
-	// 		$data['users'] = $this->UserModel->getQuery(array("userID=" . $userID));
-	// 		$data['education'] = $this->EducationModel->getQuery(array("userID=" . $userID));
-	// 		$data['award'] = $this->DetailModel->getQueryAwards(array("userID=" . $userID));
-	// 		$data['scholarship'] = $this->DetailModel->getQueryScholarships(array("userID=" . $userID));
-	// 		$data['working'] = $this->DetailModel->getQueryWorking(array("userID=" . $userID));
-	// 		$data['publication'] = $this->DetailModel->getQueryPublications(array("userID=" . $userID));
-	// 		$data['skill'] = $this->DetailModel->getQuerySkills(array("userID=" . $userID));
-	// 		$data['training'] = $this->DetailModel->getQueryTrainings(array("userID=" . $userID));
-	// 		$data["userID"] = $userID;
-	// 		$data["info"] = $this->UserModel->getUserInfo($userID);
-	// 		//  $this->load->view('header',$data);
-	// 		$this->load->view('cv', $data);
-	// 		//  $this->load->view('footer2');
-	// 	}
-	// 	// สร้าง object สำหรับใช้สร้าง pdf 
-	// 	$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
-	// 	// กำหนดรายละเอียดของ pdf
-	// 	// $pdf->SetCreator(PDF_CREATOR);
-	// 	// $pdf->SetAuthor('Nicola Asuni');
-	// 	// $pdf->SetTitle('TCPDF Example 001');
-	// 	// $pdf->SetSubject('TCPDF Tutorial');
-	// 	// $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
-
-	// 	// กำหนดข้อมูลที่จะแสดงในส่วนของ header และ footer
-	// 	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'Ubon Ratchathani University', "Faculty of Science\nwww.sci.ubu.ac.th/", array(0, 64, 255), array(0, 64, 128));
-	// 	$pdf->setFooterData(array(0, 64, 0), array(0, 64, 128));
-
-	// 	// กำหนดรูปแบบของฟอนท์และขนาดฟอนท์ที่ใช้ใน header และ footer
-	// 	$pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-	// 	$pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-
-	// 	// กำหนดค่าเริ่มต้นของฟอนท์แบบ monospaced 
-	// 	$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-
-	// 	// กำหนด margins
-	// 	$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-	// 	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-	// 	$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-
-	// 	// กำหนดการแบ่งหน้าอัตโนมัติ
-	// 	$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-
-	// 	// กำหนดรูปแบบการปรับขนาดของรูปภาพ 
-	// 	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-	// 	// ---------------------------------------------------------
-
-	// 	// set default font subsetting mode
-	// 	$pdf->setFontSubsetting(true);
-
-	// 	// กำหนดฟอนท์ 
-	// 	// ฟอนท์ freeserif รองรับภาษาไทย
-	// 	$pdf->SetFont('freeserif', '', 14, '', true);
-
-
-
-	// 	// เพิ่มหน้า pdf
-	// 	// การกำหนดในส่วนนี้ สามารถปรับรูปแบบต่างๆ ได้ ดูวิธีใช้งานที่คู่มือของ tcpdf เพิ่มเติม
-	// 	$pdf->AddPage();
-
-	// 	// กำหนดเงาของข้อความ 
-	// 	$pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
-
-	// 	// กำหนดเนื้อหาข้อมูลที่จะสร้าง pdf ในที่นี้เราจะกำหนดเป็นแบบ html โปรดระวัง EOD; โค้ดสุดท้ายต้องชิดซ้ายไม่เว้นวรรค
-	// 	$html = $this->load->view('cv2', $data, true);
-
-	// 	// สร้างข้อเนื้อหา pdf ด้วยคำสั่ง writeHTMLCell()
-	// 	$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
-
-	
-
-	// 	// จบการทำงานและแสดงไฟล์ pdf
-	// 	// การกำหนดในส่วนนี้ สามารถปรับรูปแบบต่างๆ ได้ เช่นให้บันทึกเป้นไฟล์ หรือให้แสดง pdf เลย ดูวิธีใช้งานที่คู่มือของ tcpdf เพิ่มเติม
-	// 	$pdf->Output('cv.pdf', 'I');
-	// }
-
 	public function research()
 	{
 		if (null === $this->session->userdata("userID")) {
@@ -1074,11 +1016,15 @@ class Main extends CI_Controller
 			$userID = $this->session->userdata("userID");
 			$this->load->model("UserModel");
 			$this->load->model("ResearchModel");
+			$this->load->model("PublicationModel");
+
 			$data["userID"] = $userID;
 			$data["info"] = $this->UserModel->getUserInfo($userID);
-			$data["users"] = $this->UserModel->getQuery(array("userID =".$userID));
-			$data["researchON"] = $this->ResearchModel->getQuery(array("user_id =".$userID." AND vstatus='0'"));
-			$data["researchCOM"] = $this->ResearchModel->getQuery(array("user_id =".$userID." AND vstatus='1'"));
+			$data["users"] = $this->UserModel->getQuery(array("userID =" . $userID));
+			$data["researchON"] = $this->ResearchModel->getQuery(array("user_id =" . $userID . " AND vstatus='0'"));
+			$data["researchCOM"] = $this->ResearchModel->getQuery(array("user_id =" . $userID . " AND vstatus='1'"));
+			$data["research"] = $this->ResearchModel->getQuery(array("user_id =" . $userID));
+			$data["article"] = $this->PublicationModel->getQuery(array("user_id =" . $userID));
 			$this->load->view('header', $data);
 			$this->load->view('research', $data);
 			$this->load->view('footer');
@@ -1095,9 +1041,13 @@ class Main extends CI_Controller
 
 			$userID = $this->session->userdata("userID");
 			$this->load->model("UserModel");
+			$this->load->model("DocumentModel");
+
+
 			$data["userID"] = $userID;
 			$data["info"] = $this->UserModel->getUserInfo($userID);
-			$data["users"] = $this->UserModel->getQuery();
+			$data["users"] = $this->UserModel->getQuery(array("userID =" . $userID));
+			$data["document"] = $this->DocumentModel->getQuery(array("user_id =" . $userID));
 			$this->load->view('header', $data);
 			$this->load->view('document', $data);
 			$this->load->view('footer');

@@ -39,7 +39,8 @@
 
               <div class="ml-6">
                 <!--start content -->
-                <br>
+                <div class="title_block title_l1 ml-2 " style="margin-top: 20px"> <b>ตอนที่ 1 : ข้อมูลที่กรอกเอง</b></div>
+                  <br>
                 <!-- <form method="POST"  data-parsley-validate="" class="form-horizontal form-label-left" novalidate=""> -->
                   <input type="hidden" name="userID" value="<?= $userID ?>" />
                   <div class="form-row">
@@ -106,8 +107,52 @@
                         <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_training') ?>">การฝึกอบรม</a></label>
                       </div>
                     </div>
-                  </div>
 
+                  </div>
+                  <hr>
+                  <div class="title_block title_l1 ml-2 " style="margin-top: 20px"> <b>ตอนที่ 2 : ข้อมูลที่ดึงจากระบบ</b></div>
+                  <br>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="pu">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_publication') ?>">ผลงานตีพิมพ์</a></label>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="sk">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_skill') ?>">งานวิจัยที่กำลังดำเนินการ</a></label>
+                      </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="tr">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_training') ?>">งานวิจัยที่เสร็จสิ้น</a></label>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="pu">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_publication') ?>">คำสั่ง</a></label>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <div class="form-check form-switch">
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="sk">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_skill') ?>">ภาระงาน</a></label>
+                      </div>
+                    </div>
+
+                    
+
+                  </div>
+<br>
+<br>
                   <div class="ln_solid"></div>
                   <div class="form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

@@ -413,7 +413,7 @@
                 <h6 class="card-subtitle text-muted"><a href='../../../<?= $info->ubu_mail ?>' target='_blank'>View your CV &nbsp;<i class="la la-external-link" aria-hidden="true"></i></a></h6>
               </div>
               <div class="profile_img w3-center ">
-                <div id="crop-avatar">
+                <div id="crop-avatar m-3">
                   <!-- Current avatar -->
                   <a href='<?= site_url('main/edit_picture') ?>'><img class="center" style=" display: inline-block;width: 150px;height: 150px;border-radius: 50%;background-repeat: no-repeat;background-position: center center;background-size: cover;" class="img-responsive avatar-view" src="<?= base_url("../avatars/" . $info->ubu_mail . ".png") . '?' . rand() ?>" title="Change the avatar"></a>
                 </div>
