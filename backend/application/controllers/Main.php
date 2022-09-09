@@ -533,6 +533,11 @@ class Main extends CI_Controller
 			"role" => $this->input->post("role"),
 			"email" => $this->input->post("email"),
 			"ubu_mail" => $this->input->post("ubu_mail"),
+			"forName" => $this->input->post("forName"),
+			"forNameENG" => $this->input->post("forNameENG"),
+			"nameENG" => $this->input->post("nameENG"),
+			"sirNameENG" => $this->input->post("sirNameENG"),
+
 		);
 
 		$where = array(
@@ -594,6 +599,46 @@ class Main extends CI_Controller
 		);
 		$this->UserModel->update($vdata, $where);
 		redirect(base_url("index.php/main/edit_userAll/" . $vid), 'refresh');
+	}
+
+
+	public function update_userAll()
+	{
+		$this->load->model("UserModel");
+		$vdata = array(
+			"nameENG" => $this->input->post("nameEng"),
+			"nameTH_em" => $this->input->post("nameTH"),
+			"positionNameTH_em" => $this->input->post("positionNameTH"),
+			"forNameENG" => $this->input->post("prefixNameEng"),
+			"forName" => $this->input->post("prefixNameTH"),
+			"sirNameENG" => $this->input->post("sirNameEng"),
+			"sirNameTH_em" => $this->input->post("sirNameTH"),
+			"username" => $this->input->post("username"),
+		);
+
+		$where = array(
+			"username = '" . $this->input->post("username") . "'",
+		);
+		$this->UserModel->update($vdata, $where);
+	}
+
+	public function update_userID()
+	{
+		$this->load->model("UserModel");
+		$vdata = array(
+			"nameENG" => $this->input->post("nameEng"),
+			"nameTH_em" => $this->input->post("nameTH"),
+			"positionNameTH_em" => $this->input->post("positionNameTH"),
+			"forNameENG" => $this->input->post("prefixNameEng"),
+			"forName" => $this->input->post("prefixNameTH"),
+			"sirNameENG" => $this->input->post("sirNameEng"),
+			"sirNameTH_em" => $this->input->post("sirNameTH"),
+		);
+		$username = $this->input->post("username");
+		$where = array(
+			"username = '".$username."'",
+		);
+		$this->UserModel->update($vdata, $where);
 	}
 
 

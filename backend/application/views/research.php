@@ -212,7 +212,7 @@
         e.preventDefault();
         var url = "http://localhost/research/index.php/api/findProjectCom/" + $("#namesh").val();
         var url2 = "http://localhost/research/index.php/api/findProjectOn/" + $("#namesh").val();
-        var url3 = "http://localhost/research/index.php/api/findPublications/ปุริม";
+        var url3 = "http://localhost/research/index.php/api/findPublications/" + $("#namesh").val();
 
 
 
@@ -292,7 +292,7 @@
         e.preventDefault();
         var url = "http://localhost/research/index.php/api/findProjectCom/" + $("#namesh").val();
         var url2 = "http://localhost/research/index.php/api/findProjectOn/" + $("#namesh").val();
-        var url3 = "http://localhost/research/index.php/api/findPublications/ปุริม";
+        var url3 = "http://localhost/research/index.php/api/findPublications/" + $("#namesh").val();
 
         $.post('<?= site_url('main/del_research_article') ?>', {
           "user_id": <?php echo $userID ?>,

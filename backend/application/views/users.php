@@ -37,13 +37,15 @@
                   </ul>
                   <form>
 
-                  <div class="input-group">
-                    <input type="text" class="form-control" id="uuu" placeholder="ค้นหาชื่อผู้ใช้">
-                    <span class="input-group-btn">
-                      <button id="sb" class="btn btn-default" onclick="goto(uuu.val)" type="button">ค้นหา</button>
-                      <a href="<?= site_url('main/add_user') ?>"><button class="btn btn-success" type="button">เพิ่มผู้ใช้</button></a>
-                    </span>
-                  </div>
+                    <div class="input-group">
+
+                      <button class="btn btn-info mr-1" data-toggle="modal" id="update" title="ดึงข้อมูลจากระบบ" data-target="#add-new-group">อัพเดตข้อมูลผู้ใช้ทั้งหมด</button>
+                      <input type="text" class="form-control" id="uuu" placeholder="ค้นหาชื่อผู้ใช้">
+                      <span class="input-group-btn">
+                        <button id="sb" class="btn btn-default" onclick="goto(uuu.val)" type="button">ค้นหา</button>
+                        <a href="<?= site_url('main/add_user') ?>"><button class="btn btn-success" type="button">เพิ่มผู้ใช้</button></a>
+                      </span>
+                    </div>
                   </form>
 
                 </div>
@@ -118,6 +120,37 @@
       </section>
 
       <script>
+        $("#update").click(function(e) {
+          e.preventDefault();
+          var url = "http://dataservice.sci.ubu.ac.th/1.2/index.php/StaffInfo/allPerson";
+
+          $.get(url, function(data) {
+            console.log(data);
+            $.each(data, function(i, item) {
+              $.post('<?= site_url('main/update_userAll') ?>', {
+                "nameEng": data[i].nameEng,
+                "nameTH": data[i].nameTH,
+                "positionNameTH": data[i].positionNameTH,
+                "prefixNameEng": data[i].prefixNameEng,
+                "prefixNameTH": data[i].prefixNameTH,
+                "sirNameEng": data[i].sirNameEng,
+                "sirNameTH": data[i].sirNameTH,
+                "username": data[i].username,
+              }, function(data) {
+                if (data.success == true) {}
+              }, "json");
+
+            });
+            alert("อัพเดตข้อมูลเรียบร้อย");
+            setTimeout(() => {
+              document.location.reload();
+            }, 1000);
+
+          }, "json");
+
+
+        });
+
         $(document).ready(function() {
           $('#data').after('<div class="pull-right m-1 " id="nav"></div>');
           var rowsShown = 10;
@@ -125,7 +158,7 @@
           var numPages = rowsTotal / rowsShown;
           for (i = 0; i < numPages; i++) {
             var pageNum = i + 1;
-            $('#nav').append('<a href="#' + (i+1) + '" rel="' + i + '">' + pageNum + '</a> ');
+            $('#nav').append('<a href="#' + (i + 1) + '" rel="' + i + '">' + pageNum + '</a> ');
           }
           $('#data tbody tr').hide();
           $('#data tbody tr').slice(0, rowsShown).show();
@@ -155,7 +188,6 @@
         //   window.location = "<?php echo base_url(); ?>index.php/main/users_search/" +name;
 
         // }
-
       </script>
 
       <style>

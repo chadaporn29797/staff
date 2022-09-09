@@ -29,11 +29,14 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="list-inline mb-0">
+                  <li class="mr-1" >อัพเดตข้อมูลล่าสุดเมื่อ <?php echo $users[0]->update; ?> </li>
+                    <button class="btn btn-info mr-1" data-toggle="modal" id="update" title="ดึงข้อมูลจากระบบ" data-target="#add-new-group">อัพเดตข้อมูล</button>
+
                     <li><a href='<?= site_url('main/edit_userAll/' . $users[0]->userID) ?>'>
                         แก้ไขข้อมูลทั้งหมด
                       </a></li>
-                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    <!-- <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li> -->
 
                   </ul>
                 </div>
@@ -45,23 +48,57 @@
                 <form method="POST" action='<?php echo base_url(); ?>index.php/main/edit_user2/<?php echo $users[0]->userID; ?>' enctype='multipart/form-data' class="form-horizontal form-label-left">
                   <input type="hidden" name="userID" value="<?= $userID ?>" />
                   <div class="form-row">
-
+                    <div class="form-group col-md-2">
+                      <label class="control-label ml-1" for="forName">คำนำหน้าภาษาไทย
+                      </label>
+                      <div class="ml-1">
+                        <input type="text" id="forName" name="forName" required="required" class="form-control " value="<?php echo $users[0]->forName; ?>">
+                      </div>
+                    </div>
                     <div class="form-group col-md-5">
                       <label class="control-label ml-1" for="nameTH_em">ชื่อภาษาไทย<span class="required">*</span>
                       </label>
-                      <div class=" ml-1 ">
+                      <div class="  ">
                         <input type="text" id="nameTH_em" name="nameTH_em" value='<?php echo $users[0]->nameTH_em; ?>' required class="form-control ">
                       </div>
                     </div>
 
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-5 ">
                       <label class="control-label " for="sirNameTH_em">นามสกุล <span class="required">*</span>
                       </label>
-                      <div class="  ">
+                      <div class=" mr-1 ">
                         <input type="text" id="sirNameTH_em" name="sirNameTH_em" value='<?php echo $users[0]->sirNameTH_em; ?>' required class="form-control ">
+                        <input type="hidden" id="username" name="username" value='<?php echo $users[0]->username; ?>'>
                       </div>
                     </div>
                   </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-2">
+                      <label class="control-label ml-1  " for="forNameENG">คำนำหน้า(ENG)
+                      </label>
+                      <div class=" ml-1 ">
+                        <input type="text" id="forNameENG" name="forNameENG" required="required" class="form-control " value='<?php echo $users[0]->forNameENG; ?>'>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-5">
+                      <label class="control-label " for="nameENG">ชื่อ(ENG)
+                      </label>
+                      <div class="  ">
+                        <input type="text" id="nameENG" name="nameENG" class="form-control " value='<?php echo $users[0]->nameENG; ?>'>
+                      </div>
+                    </div>
+
+                    <div class="form-group col-md-5">
+                      <label class="control-label " for="sirNameENG">นามสกุล(ENG)
+                      </label>
+                      <div class=" mr-1 ">
+                        <input type="text" id="sirNameENG" name="sirNameENG" class="form-control " value='<?php echo $users[0]->sirNameENG; ?>'>
+                      </div>
+                    </div>
+                  </div>
+
+
                   <div class="form-row">
                     <div class="form-group col-md-5">
                       <label class="control-label ml-1">Username</label>
@@ -148,3 +185,37 @@
         </div>
       </section>
       <!-- // Line Awesome section end -->
+
+      <script>
+        $("#update").click(function(e) {
+          e.preventDefault();
+          var url = "http://dataservice.sci.ubu.ac.th/1.2/index.php/StaffInfo/getPerson/" + $("#username").val();
+          
+
+          $.get(url, function(data) {
+            console.log(data);
+            $.each(data, function(i, item) {
+              $.post('<?= site_url('main/update_userID/') ?>', {
+                "nameEng": data[i].nameEng,
+                "nameTH": data[i].nameTH,
+                "positionNameTH": data[i].positionNameTH,
+                "prefixNameEng": data[i].prefixNameEng,
+                "prefixNameTH": data[i].prefixNameTH,
+                "sirNameEng": data[i].sirNameEng,
+                "sirNameTH": data[i].sirNameTH,
+                "username": $("#username").val(),
+              }, function(data) {
+                if (data.success == true) {}
+              }, "json");
+
+            });
+            alert("อัพเดตข้อมูลเรียบร้อย");
+            // setTimeout(() => {
+            //   document.location.reload();
+            // }, 1000);
+
+          }, "json");
+
+
+        });
+      </script>

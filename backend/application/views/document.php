@@ -124,7 +124,7 @@
     <script>
       $("#konha").click(function(e) {
         e.preventDefault();
-        var url = "http://localhost/document/index.php/api/finddocPerson/" + $("#namesh").val();
+        var url = "http://www.sci.ubu.ac.th/command/index.php/api/finddocPerson/" + $("#namesh").val();
 
         $.get(url, function(data) {
           console.log(data);
@@ -154,7 +154,7 @@
 
       $("#update").click(function(e) {
         e.preventDefault();
-        var url = "http://localhost/document/index.php/api/finddocPerson/" + $("#namesh").val();
+        var url = "http://www.sci.ubu.ac.th/command/index.php/api/finddocPerson/" + $("#namesh").val();
 
         $.post('<?= site_url('main/del_document') ?>', {
           "user_id": <?php echo $userID ?>,
