@@ -117,18 +117,12 @@
                   </div>
                   
                   <div class="form-row">
+                    
+
                     <div class="form-group col-md-5">
-                      <label class="control-label ml-1">Username</label>
+                      <label class="control-label ml-1">หน่วยงาน</label>
                       <div class="ml-1">
-                        <input id="username" name="username" value='<?php echo $users[0]->username; ?>' class=" form-control " required="required" type="text">
-                      </div>
-                    </div>
-
-                    <div class="form-group col-md-5">
-                      <label class="control-label ">หน่วยงาน</label>
-                      <div class="">
                         <fieldset class="form-group">
-
                           <select class="form-control" id="departmentID_em" name="departmentID_em">
                             <?php
                             $ii = $users[0]->departmentID_em;
@@ -147,9 +141,6 @@
                         </fieldset>
                       </div>
                     </div>
-                  </div>
-
-                  <div class="form-row">
                     <div class="form-group col-md-4">
                       <label class="control-label ml-1">หน้าที่</label>
                       <div class="ml-1">
@@ -169,9 +160,14 @@
                       </div>
                     </div>
 
+                  </div>
+
+                  <div class="form-row">
+                    
+
                     <div class="form-group col-md-4">
-                      <label class="control-label " for="first-name">email<span class="required"> </span></label>
-                      <div class="">
+                      <label class="control-label ml-1" for="first-name">email<span class="required"> </span></label>
+                      <div class="ml-1">
                         <input id="email" name="email" class=" form-control " value='<?php echo $users[0]->email; ?>' required="required" type="text">
                       </div>
                     </div>

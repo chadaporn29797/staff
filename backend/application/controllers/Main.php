@@ -528,7 +528,6 @@ class Main extends CI_Controller
 		$vdata = array(
 			"nameTH_em" => $this->input->post("nameTH_em"),
 			"sirNameTH_em" => $this->input->post("sirNameTH_em"),
-			"username" => $this->input->post("username"),
 			"departmentID_em" => $this->input->post("departmentID_em"),
 			"role" => $this->input->post("role"),
 			"email" => $this->input->post("email"),
@@ -580,7 +579,6 @@ class Main extends CI_Controller
 		$vdata = array(
 			"nameTH_em" => $this->input->post("nameTH_em"),
 			"sirNameTH_em" => $this->input->post("sirNameTH_em"),
-			"username" => $this->input->post("username"),
 			"departmentID_em" => $this->input->post("departmentID_em"),
 			"role" => $this->input->post("role"),
 			"email" => $this->input->post("email"),
@@ -605,6 +603,7 @@ class Main extends CI_Controller
 	public function update_userAll()
 	{
 		$this->load->model("UserModel");
+		$this->load->model("UpdateModel");
 		$vdata = array(
 			"nameENG" => $this->input->post("nameEng"),
 			"nameTH_em" => $this->input->post("nameTH"),
@@ -620,6 +619,16 @@ class Main extends CI_Controller
 			"username = '" . $this->input->post("username") . "'",
 		);
 		$this->UserModel->update($vdata, $where);
+		// $this->UpdateModel->insert();
+	}
+
+	public function update_date()
+	{
+		$this->load->model("UpdateModel");
+		$vdata = array(
+			"data" => $this->input->post("data"),
+		);
+		$this->UpdateModel->insert($vdata);
 	}
 
 	public function update_userID()
@@ -636,7 +645,7 @@ class Main extends CI_Controller
 		);
 		$username = $this->input->post("username");
 		$where = array(
-			"username = '".$username."'",
+			"username = '" . $username . "'",
 		);
 		$this->UserModel->update($vdata, $where);
 	}
@@ -1128,9 +1137,11 @@ class Main extends CI_Controller
 
 			$userID = $this->session->userdata("userID");
 			$this->load->model("UserModel");
+			$this->load->model("UpdateModel");
 			$data["userID"] = $userID;
 			$data["info"] = $this->UserModel->getUserInfo($userID);
 			$data["users"] = $this->UserModel->getQuery();
+			$data["update"] = $this->UpdateModel->getQuery();
 			$this->load->view('header', $data);
 			$this->load->view('users', $data);
 			$this->load->view('footer');

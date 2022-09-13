@@ -29,7 +29,7 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="list-inline mb-0">
-                  <li class="mr-1" >อัพเดตข้อมูลล่าสุดเมื่อ <?php echo $users[0]->update; ?> </li>
+                    <li class="mr-1">อัพเดตข้อมูลล่าสุดเมื่อ <?php echo $users[0]->update; ?> </li>
                     <button class="btn btn-info mr-1" data-toggle="modal" id="update" title="ดึงข้อมูลจากระบบ" data-target="#add-new-group">อัพเดตข้อมูล</button>
 
                     <li><a href='<?= site_url('main/edit_userAll/' . $users[0]->userID) ?>'>
@@ -100,16 +100,11 @@
 
 
                   <div class="form-row">
-                    <div class="form-group col-md-5">
-                      <label class="control-label ml-1">Username</label>
-                      <div class="ml-1">
-                        <input id="username" name="username" value='<?php echo $users[0]->username; ?>' class=" form-control " required="required" type="text">
-                      </div>
-                    </div>
+
 
                     <div class="form-group col-md-5">
-                      <label class="control-label ">หน่วยงาน</label>
-                      <div class="">
+                      <label class="control-label ml-1 ">หน่วยงาน</label>
+                      <div class="ml-1">
                         <fieldset class="form-group">
 
                           <select class="form-control" id="departmentID_em" name="departmentID_em">
@@ -130,9 +125,7 @@
                         </fieldset>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="form-row">
                     <div class="form-group col-md-4">
                       <label class="control-label ml-1">หน้าที่</label>
                       <div class="ml-1">
@@ -152,7 +145,11 @@
                       </div>
                     </div>
 
-                    <div class="form-group col-md-4">
+                  </div>
+
+                  <div class="form-row">
+
+                    <div class="form-group col-md-4 ml-1">
                       <label class="control-label " for="first-name">email<span class="required"> </span></label>
                       <div class="">
                         <input id="email" name="email" class=" form-control " value='<?php echo $users[0]->email; ?>' required="required" type="text">
@@ -190,12 +187,12 @@
         $("#update").click(function(e) {
           e.preventDefault();
           var url = "http://dataservice.sci.ubu.ac.th/1.2/index.php/StaffInfo/getPerson/" + $("#username").val();
-          
+
 
           $.get(url, function(data) {
             console.log(data);
             $.each(data, function(i, item) {
-              $.post('<?= site_url('main/update_userID/') ?>', {
+              $.post('<?= site_url('main/update_userID') ?>', {
                 "nameEng": data[i].nameEng,
                 "nameTH": data[i].nameTH,
                 "positionNameTH": data[i].positionNameTH,
@@ -210,11 +207,13 @@
 
             });
             alert("อัพเดตข้อมูลเรียบร้อย");
-            // setTimeout(() => {
-            //   document.location.reload();
-            // }, 1000);
+            setTimeout(() => {
+              document.location.reload();
+            }, 1000);
 
           }, "json");
+
+          
 
 
         });

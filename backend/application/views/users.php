@@ -34,12 +34,15 @@
                     <!-- <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li> -->
                     <!-- <a href="#addUser" data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></a> -->
+                    <li class="mr-1" >อัพเดตข้อมูลล่าสุดเมื่อ <?php echo $update[0]->date; ?> </li>
+                    <button class="btn btn-info mr-1" data-toggle="modal" id="update" title="ดึงข้อมูลจากระบบ" data-target="#add-new-group">อัพเดตข้อมูลผู้ใช้ทั้งหมด</button>
+
+
                   </ul>
+                  <br>
                   <form>
-
                     <div class="input-group">
-
-                      <button class="btn btn-info mr-1" data-toggle="modal" id="update" title="ดึงข้อมูลจากระบบ" data-target="#add-new-group">อัพเดตข้อมูลผู้ใช้ทั้งหมด</button>
+                      <!-- <button class="btn btn-info mr-1" data-toggle="modal" id="update" title="ดึงข้อมูลจากระบบ" data-target="#add-new-group">อัพเดตข้อมูลผู้ใช้ทั้งหมด</button> -->
                       <input type="text" class="form-control" id="uuu" placeholder="ค้นหาชื่อผู้ใช้">
                       <span class="input-group-btn">
                         <button id="sb" class="btn btn-default" onclick="goto(uuu.val)" type="button">ค้นหา</button>
@@ -48,12 +51,15 @@
                     </div>
                   </form>
 
+
                 </div>
               </div>
 
+              <br>
 
-              <div class="ml-6">
+              <div class="ml-6 mt-1">
                 <!--start content -->
+                  <br>
                 <br>
 
                 <div class="clearfix"></div>
@@ -123,6 +129,12 @@
         $("#update").click(function(e) {
           e.preventDefault();
           var url = "http://dataservice.sci.ubu.ac.th/1.2/index.php/StaffInfo/allPerson";
+
+          $.post('<?= site_url('main/update_date') ?>', {
+            "data": "0",
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
 
           $.get(url, function(data) {
             console.log(data);

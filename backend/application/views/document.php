@@ -124,7 +124,7 @@
     <script>
       $("#konha").click(function(e) {
         e.preventDefault();
-        var url = "http://www.sci.ubu.ac.th/command/index.php/api/finddocPerson/" + $("#namesh").val();
+        var url = "http://localhost/document/index.php/api/finddocPerson/" + $("#namesh").val();
 
         $.get(url, function(data) {
           console.log(data);
