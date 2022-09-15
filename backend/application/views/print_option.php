@@ -40,126 +40,124 @@
               <div class="ml-6">
                 <!--start content -->
                 <div class="title_block title_l1 ml-2 " style="margin-top: 20px"> <b>ตอนที่ 1 : ข้อมูลที่กรอกเอง</b></div>
-                  <br>
+                <br>
                 <!-- <form method="POST"  data-parsley-validate="" class="form-horizontal form-label-left" novalidate=""> -->
-                  <input type="hidden" name="userID" value="<?= $userID ?>" />
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green " type="checkbox" id="chkSelectAll">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/dashboard') ?>">ทั้งหมด</a></label>
-                      </div>
+                <input type="hidden" name="userID" value="<?= $userID ?>" />
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green " type="checkbox" id="chkSelectAll" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/dashboard') ?>">ทั้งหมด</a></label>
                     </div>
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green" type="checkbox" id="toggle" checked disabled name="cb" value="ed">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_education') ?>">ประวัติการศึกษา</a></label>
-                      </div>
-                    </div>
-
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle"  name="cb" value="re">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/dashboard') ?>">งานวิจัยที่สนใจ</a></label>
-                      </div>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green" type="checkbox" id="toggle" checked disabled name="cb" value="ed">
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_education') ?>">ประวัติการศึกษา</a></label>
                     </div>
                   </div>
 
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="aw">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_award') ?>">รางวัลและเกียรติยศ</a></label>
-                      </div>
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green dd" type="checkbox" id="res" name="cb" value="re" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/dashboard') ?>">งานวิจัยที่สนใจ</a></label>
                     </div>
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="sh">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_scholarship') ?>">ทุนการศึกษา</a></label>
-                      </div>
-                    </div>
+                  </div>
+                </div>
 
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="wo">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_work_exps') ?>">ประสบการณ์การทำงาน</a></label>
-                      </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green dd" type="checkbox" id="award" name="cb" value="aw" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_award') ?>">รางวัลและเกียรติยศ</a></label>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green dd" type="checkbox" id="scho" name="cb" value="sh" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_scholarship') ?>">ทุนการศึกษา</a></label>
                     </div>
                   </div>
 
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="pu">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_publication') ?>">ผลงานตีพิมพ์</a></label>
-                      </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="sk">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_skill') ?>">ทักษะอื่นๆ</a></label>
-                      </div>
-                    </div>
-
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="tr">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_training') ?>">การฝึกอบรม</a></label>
-                      </div>
-                    </div>
-
-                  </div>
-                  <hr>
-                  <div class="title_block title_l1 ml-2 " style="margin-top: 20px"> <b>ตอนที่ 2 : ข้อมูลที่ดึงจากระบบ</b></div>
-                  <br>
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="pu">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_publication') ?>">ผลงานตีพิมพ์</a></label>
-                      </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="sk">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_skill') ?>">งานวิจัยที่กำลังดำเนินการ</a></label>
-                      </div>
-                    </div>
-
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="tr">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_training') ?>">งานวิจัยที่เสร็จสิ้น</a></label>
-                      </div>
-                    </div>
-
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="pu">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_publication') ?>">คำสั่ง</a></label>
-                      </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <div class="form-check form-switch">
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="sk">
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_skill') ?>">ภาระงาน</a></label>
-                      </div>
-                    </div>
-
-                    
-
-                  </div>
-<br>
-<br>
-                  <div class="ln_solid"></div>
-                  <div class="form-group">
-                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                      <button onclick='vactive();' class="btn btn-success">ดูตัวอย่าง</button>
-                      <a href='<?= site_url("main/dashboard") ?>' class="btn btn-primary" type="button">ยกเลิก</a>
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green dd" type="checkbox" id="work" name="cb" value="wo" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_work_exps') ?>">ประสบการณ์การทำงาน</a></label>
                     </div>
                   </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green dd" type="checkbox" id="public" name="cb" value="pu" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_publication') ?>">ผลงานตีพิมพ์</a></label>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green dd" type="checkbox" id="skill" name="cb" value="sk" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_skill') ?>">ทักษะอื่นๆ</a></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green dd" type="checkbox" id="train" name="cb" value="tr" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/add_training') ?>">การฝึกอบรม</a></label>
+                    </div>
+                  </div>
+
+                </div>
+                <hr>
+                <div class="title_block title_l1 ml-2 " style="margin-top: 20px"> <b>ตอนที่ 2 : ข้อมูลที่ดึงจากระบบ</b></div>
+                <br>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green dd" type="checkbox" id="pub" name="cb" value="pu" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/research') ?>">ผลงานตีพิมพ์</a></label>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green dd" type="checkbox" id="ongo" name="cb" value="sk" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/research') ?>">งานวิจัยที่กำลังดำเนินการ</a></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green dd" type="checkbox" id="com" name="cb" value="tr" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/research') ?>">งานวิจัยที่เสร็จสิ้น</a></label>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green dd" type="checkbox" id="doc" name="cb" value="pu" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/document') ?>">คำสั่ง</a></label>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="sk" checked>
+                      <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/workload') ?>">ภาระงาน</a></label>
+                    </div>
+                  </div>
+
+                </div>
+                <br>
+                <br>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <button onclick='vactive();' class="btn btn-success">ดูตัวอย่าง</button>
+                    <a href='<?= site_url("main/dashboard") ?>' class="btn btn-primary" type="button">ยกเลิก</a>
+                  </div>
+                </div>
 
                 <!-- </form> -->
                 <!--- end content -->
@@ -179,14 +177,174 @@
 
         function vactive() {
 
-          var markedCheckbox = document.getElementsByName('cb');
-          var res = "";
-          for (var checkbox of markedCheckbox) {
-            if (checkbox.checked) {
-              res += checkbox.value + '/';
-            }
+          ////////////งานวิจัยที่สนใจ
+          var res;
+          if (document.getElementById("res").checked == true) {
+            res = 0;
+          }else if(document.getElementById("res").checked == false){
+            res = 1;
           }
-        
-          window.location = "<?php echo base_url(); ?>index.php/main/cv/"+ res;
+          $.post('<?= site_url('main/edit_res') ?>', {
+            "user_id": <?php echo $userID ?>,
+            "status_show": res,
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
+
+          ////////////รางวัลและเกียรติยศ
+          var award;
+          if (document.getElementById("award").checked == true) {
+            award = 0;
+          }else if(document.getElementById("award").checked == false){
+            award = 1;
+          }
+          $.post('<?= site_url('main/edit_award') ?>', {
+            "user_id": <?php echo $userID ?>,
+            "status_show": award,
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
+
+          ////////////ทุนการศึกษา
+          var scho;
+          if (document.getElementById("scho").checked == true) {
+            scho = 0;
+          }else if(document.getElementById("scho").checked == false){
+            scho = 1;
+          }
+          $.post('<?= site_url('main/edit_scho') ?>', {
+            "user_id": <?php echo $userID ?>,
+            "status_show": scho,
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
+
+          ////////////ประสบการณ์การทำงาน
+          var work;
+          if (document.getElementById("work").checked == true) {
+            work = 0;
+          }else if(document.getElementById("work").checked == false){
+            work = 1;
+          }
+          $.post('<?= site_url('main/edit_work') ?>', {
+            "user_id": <?php echo $userID ?>,
+            "status_show": work,
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
+
+          ////////////ผลงานตีพิมพ์
+          var public;
+          if (document.getElementById("public").checked == true) {
+            public = 0;
+          }else if(document.getElementById("public").checked == false){
+            public = 1;
+          }
+          $.post('<?= site_url('main/edit_public') ?>', {
+            "user_id": <?php echo $userID ?>,
+            "status_show": public,
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
+
+          ////////////ทักษะอื่นๆ
+          var skill;
+          if (document.getElementById("skill").checked == true) {
+            skill = 0;
+          }else if(document.getElementById("skill").checked == false){
+            skill = 1;
+          }
+          $.post('<?= site_url('main/edit_skill') ?>', {
+            "user_id": <?php echo $userID ?>,
+            "status_show": skill,
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
+
+          ////////////การฝึกอบรม
+          var train;
+          if (document.getElementById("train").checked == true) {
+            train = 0;
+          }else if(document.getElementById("train").checked == false){
+            train = 1;
+          }
+          $.post('<?= site_url('main/edit_train') ?>', {
+            "user_id": <?php echo $userID ?>,
+            "status_show": train,
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
+
+          //////////////ตอนที่2\\\\\\\\\\\\\\\\
+
+          ////////////ผลงานตีพิมพ์
+          var pub;
+          if (document.getElementById("pub").checked == true) {
+            pub = 0;
+          }else if(document.getElementById("pub").checked == false){
+            pub = 1;
+          }
+          $.post('<?= site_url('main/edit_pub') ?>', {
+            "user_id": <?php echo $userID ?>,
+            "status_show": pub,
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
+
+          ////////////งานวิจัยที่กำลังดำเนินการ
+          var ongo;
+          if (document.getElementById("ongo").checked == true) {
+            ongo = 0;
+          }else if(document.getElementById("ongo").checked == false){
+            ongo = 1;
+          }
+          $.post('<?= site_url('main/edit_ongo') ?>', {
+            "user_id": <?php echo $userID ?>,
+            "status_show": ongo,
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
+
+          ////////////งานวิจัยที่เสร็จสิ้น
+          var com;
+          if (document.getElementById("com").checked == true) {
+            com = 0;
+          }else if(document.getElementById("com").checked == false){
+            com = 1;
+          }
+          $.post('<?= site_url('main/edit_com') ?>', {
+            "user_id": <?php echo $userID ?>,
+            "status_show": com,
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
+
+          ////////////คำสั่ง
+          var doc;
+          if (document.getElementById("doc").checked == true) {
+            doc = 0;
+          }else if(document.getElementById("doc").checked == false){
+            doc = 1;
+          }
+          $.post('<?= site_url('main/edit_doc') ?>', {
+            "user_id": <?php echo $userID ?>,
+            "status_show": doc,
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
+
         }
+
+        // function vactive() {
+
+        //   var markedCheckbox = document.getElementsByName('cb');
+        //   var res = "";
+        //   for (var checkbox of markedCheckbox) {
+        //     if (checkbox.checked) {
+        //       res += checkbox.value + '/';
+        //     }
+        //   }
+
+        //   window.location = "<?php echo base_url(); ?>index.php/main/cv/" + res;
+        // }
       </script>

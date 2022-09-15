@@ -139,22 +139,23 @@ $language = $row["language"];
             <div class="resume-main col-12 col-lg-12 col-xl-12   pe-0   pe-lg-5">
 
 
-              <section class="work-section py-3">
-                <?php if (NULL != $overview &&  strlen($overview) > $MIN_STR_LENGTH) : ?>
+
+              <?php if (NULL != $overview &&  strlen($overview) > $MIN_STR_LENGTH) : ?>
+                <section class="work-section py-3">
                   <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['overview'][$language] ?></h3>
                   <div>
                     <?= $overview ?>
                   </div><!-- //item -->
-                <?php endif; ?>
-              </section>
+                </section>
+              <?php endif; ?>
 
 
-              <section class="work-section py-3">
-                <?php
-                $sql = "SELECT * FROM award WHERE userID=$userID ORDER BY sortOrder ASC ";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                ?>
+              <?php
+              $sql = "SELECT * FROM award WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $result = $conn->query($sql);
+              if ($result->num_rows > 0) {
+              ?>
+                <section class="work-section py-3">
                   <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['award'][$language] ?></h3>
                   <div class="item-content">
                     <?php while ($award = $result->fetch_assoc()) : ?>
@@ -163,15 +164,15 @@ $language = $row["language"];
                       </ul>
                     <?php endwhile; ?>
                   </div>
-                <?php } ?>
-              </section>
+                </section>
+              <?php } ?>
 
-              <section class="work-section py-3">
-                <?php
-                $sql = "SELECT * FROM scholarship WHERE userID=$userID ORDER BY sortOrder ASC ";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                ?>
+              <?php
+              $sql = "SELECT * FROM scholarship WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $result = $conn->query($sql);
+              if ($result->num_rows > 0) {
+              ?>
+                <section class="work-section py-3">
                   <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['scholarship'][$language] ?></h3>
                   <div class="item-content">
                     <?php while ($scholarship = $result->fetch_assoc()) : ?>
@@ -180,16 +181,16 @@ $language = $row["language"];
                       </ul>
                     <?php endwhile; ?>
                   </div>
-                <?php } ?>
-              </section>
+                </section>
+              <?php } ?>
 
 
-              <section class="work-section py-3">
-                <?php
-                $sql = "SELECT * FROM work_exp WHERE userID=$userID ORDER BY sortOrder ASC ";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                ?>
+              <?php
+              $sql = "SELECT * FROM work_exp WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $result = $conn->query($sql);
+              if ($result->num_rows > 0) {
+              ?>
+                <section class="work-section py-3">
                   <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['working'][$language] ?></h3>
                   <div class="item-content">
                     <?php while ($work_exp = $result->fetch_assoc()) : ?>
@@ -199,15 +200,15 @@ $language = $row["language"];
 
                     <?php endwhile; ?>
                   </div>
-                <?php } ?>
-              </section>
+                </section>
+              <?php } ?>
 
-              <section class="work-section py-3">
-                <?php
-                $sql = "SELECT * FROM publication WHERE userID=$userID ORDER BY sortOrder ASC ";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                ?>
+              <?php
+              $sql = "SELECT * FROM publication WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $result = $conn->query($sql);
+              if ($result->num_rows > 0) {
+              ?>
+                <section class="work-section py-3">
                   <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['publication'][$language] ?></h3>
                   <div class="item-content">
                     <?php while ($publication = $result->fetch_assoc()) : ?>
@@ -216,44 +217,126 @@ $language = $row["language"];
                       </ol>
                     <?php endwhile; ?>
                   </div><!-- //publication-->
-                <?php } ?>
-              </section>
+                </section>
+              <?php } ?>
 
 
-              <section class="work-section py-3">
-                <?php
-                $sql = "SELECT * FROM skill WHERE userID=$userID ORDER BY sortOrder ASC ";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                ?>
+              <?php
+              $sql = "SELECT * FROM skill WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $result = $conn->query($sql);
+              if ($result->num_rows > 0) {
+              ?>
+                <section class="work-section py-3">
                   <h3 class="text-uppercase resume-section-heading mb-4"><?= $titles['skill'][$language] ?></h3>
                   <div class="item-content">
-                  <?php while ($skill = $result->fetch_assoc()) : ?>
-                    <ul>
-                      <li><?= $skill["detail"] ?> </li>
-                    </ul>
-                  <?php endwhile; ?>
+                    <?php while ($skill = $result->fetch_assoc()) : ?>
+                      <ul>
+                        <li><?= $skill["detail"] ?> </li>
+                      </ul>
+                    <?php endwhile; ?>
                   </div>
-                <?php } ?>
-              </section>
+                </section>
+              <?php } ?>
 
 
-              <section class="work-section py-3">
-                <?php
-                $sql = "SELECT * FROM training WHERE userID=$userID ORDER BY sortOrder ASC ";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                ?>
+              <?php
+              $sql = "SELECT * FROM training WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $result = $conn->query($sql);
+              if ($result->num_rows > 0) {
+              ?>
+                <section class="work-section py-3">
                   <h3 class="text-uppercase resume-section-heading mb-4"><?= $titles['training'][$language] ?></h3>
                   <div class="item-content">
-                  <?php while ($training = $result->fetch_assoc()) : ?>
-                    <ul>
-                      <li><?= $training["detail"] ?> </li>
-                    </ul>
-                  <?php endwhile; ?>
+                    <?php while ($training = $result->fetch_assoc()) : ?>
+                      <ul>
+                        <li><?= $training["detail"] ?> </li>
+                      </ul>
+                    <?php endwhile; ?>
                   </div>
-                <?php } ?>
-              </section>
+                </section>
+              <?php } ?>
+
+              <?php
+              $sql = "SELECT * FROM research_into WHERE user_id=$userID";
+              $sql2 = "SELECT * FROM research_into WHERE user_id=$userID and vstatus=0";
+              $sql3 = "SELECT * FROM research_into WHERE user_id=$userID and vstatus=1";
+              $result = $conn->query($sql);
+              $result2 = $conn->query($sql2);
+              $result3 = $conn->query($sql3);
+              if ($result->num_rows > 0) {
+              ?>
+                <section class="work-section py-3">
+                  <h3 class="text-uppercase resume-section-heading mb-4"><?= $titles['research'][$language] ?></h3>
+                  <div class="item mb-3">
+                    <?php $result2 = $conn->query($sql2);
+                    if ($result2->num_rows > 0) { ?>
+
+                      <div class="item-heading row align-items-center mb-2">
+                        <h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0"><?= $titles['research2'][$language] ?></h4>
+                      </div>
+                      <div class="item-content">
+                        <?php while ($research = $result2->fetch_assoc()) : ?>
+                          <ul>
+                            <li><?= $research["title"] ?> (<?= $research["budget_year"] ?>)</li>
+                          </ul>
+                        <?php endwhile; ?>
+                      </div>
+                    <?php  } ?>
+                    <br>
+                    <?php $result3 = $conn->query($sql3);
+                    if ($result3->num_rows > 0) { ?>
+
+                      <div class="item-heading row align-items-center mb-2">
+                        <h4 class="item-title col-12 col-md-6 col-lg-8 mb-2 mb-md-0"><?= $titles['research3'][$language] ?></h4>
+                      </div>
+                      <div class="item-content">
+                        <?php while ($research = $result3->fetch_assoc()) : ?>
+                          <ul>
+                            <li><?= $research["title"] ?> (<?= $research["budget_year"] ?>)</li>
+                          </ul>
+                        <?php endwhile; ?>
+                      </div>
+                    <?php  } ?>
+                </section>
+              <?php
+              }
+              ?>
+
+              <?php
+              $sql = "SELECT * FROM publication_into WHERE user_id=$userID ";
+              $result = $conn->query($sql);
+              if ($result->num_rows > 0) {
+              ?>
+                <section class="work-section py-3">
+                  <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['publication'][$language] ?></h3>
+                  <div class="item-content">
+                    <?php while ($publication = $result->fetch_assoc()) : ?>
+                      <ul>
+                      <li><?= $publication["title"] ?> (<?= $publication["journal_year"] ?>)</li>
+                      </ul>
+                    <?php endwhile; ?>
+                  </div><!-- //publication-->
+                </section>
+              <?php } ?>
+
+              <?php
+              $sql = "SELECT * FROM document_into WHERE user_id=$userID ";
+              $result = $conn->query($sql);
+              if ($result->num_rows > 0) {
+              ?>
+                <section class="work-section py-3">
+                  <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['command'][$language] ?></h3>
+                  <div class="item-content">
+                    <?php while ($document = $result->fetch_assoc()) : ?>
+                      <ul>
+                      <li><?= $document["no"] ?> <?= $document["document_name"] ?> (<?= $document["budget_year"] ?>)</li>
+                      </ul>
+                    <?php endwhile; ?>
+                  </div>
+                </section>
+              <?php } ?>
+
+
 
 
               <!--//resume-main-->

@@ -86,7 +86,7 @@
                                 <th scope="row"><?php echo $no + 1; ?></th>
                                 <td><?php echo $row->no; ?></a></td>
                                 <td><?php echo $row->document_type; ?></a></td>
-                                <td><a href="http://localhost/document/index.php/Main/vShowDocument/<?php echo $row->document_id; ?>" target="_blank"><?php echo $row->document_name; ?></a></td>
+                                <td><a href="http://www.sci.ubu.ac.th/command/index.php/Main/vShowDocument/<?php echo $row->document_id; ?>" target="_blank"><?php echo $row->document_name; ?></a></td>
                               </tr>
                             <?php
                               $no++;

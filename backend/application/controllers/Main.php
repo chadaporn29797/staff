@@ -522,6 +522,135 @@ class Main extends CI_Controller
 		}
 	}
 
+	public function edit_doc()
+	{
+		$this->load->model("DocumentModel");
+		$vdata = array(
+			"status_show" => $this->input->post("status_show"),
+		);
+		$where = array(
+			"user_id =" . $this->input->post("user_id")
+		);
+		$this->DocumentModel->update($vdata, $where);
+	}
+	public function edit_pub()
+	{
+		$this->load->model("PublicationModel");
+		$vdata = array(
+			"status_show" => $this->input->post("status_show"),
+		);
+		$where = array(
+			"user_id =" . $this->input->post("user_id")
+		);
+		$this->PublicationModel->update($vdata, $where);
+	}
+	public function edit_ongo()
+	{
+		$this->load->model("ResearchModel");
+		$vdata = array(
+			"status_show" => $this->input->post("status_show"),
+		);
+		$where = array(
+			"user_id =" . $this->input->post("user_id")." AND vstatus=0"
+		);
+		$this->ResearchModel->update($vdata, $where);
+	}
+	public function edit_com()
+	{
+		$this->load->model("ResearchModel");
+		$vdata = array(
+			"status_show" => $this->input->post("status_show"),
+		);
+		$where = array(
+			"user_id =" . $this->input->post("user_id")." AND vstatus=1"
+		);
+		$this->ResearchModel->update($vdata, $where);
+	}
+	////////////////////ตอนที่ 1\\\\\\\\\\\\\\\\\\\\\\\\
+	public function edit_res()
+	{
+		$this->load->model("DocumentModel");
+		$vdata = array(
+			"status_show" => $this->input->post("status_show"),
+		);
+		$where = array(
+			"userID =" . $this->input->post("user_id")
+		);
+		$this->DocumentModel->update($vdata, $where);
+	}
+
+	public function edit_award()
+	{
+		$this->load->model("AwardModel");
+		$vdata = array(
+			"status_show" => $this->input->post("status_show"),
+		);
+		$where = array(
+			"userID =" . $this->input->post("user_id")
+		);
+		$this->AwardModel->update($vdata, $where);
+	}
+
+	public function edit_scho()
+	{
+		$this->load->model("ScholarshipModel");
+		$vdata = array(
+			"status_show" => $this->input->post("status_show"),
+		);
+		$where = array(
+			"userID =" . $this->input->post("user_id")
+		);
+		$this->ScholarshipModel->update($vdata, $where);
+	}
+
+	public function edit_work()
+	{
+		$this->load->model("WorkExpModel");
+		$vdata = array(
+			"status_show" => $this->input->post("status_show"),
+		);
+		$where = array(
+			"userID =" . $this->input->post("user_id")
+		);
+		$this->WorkExpModel->update($vdata, $where);
+	}
+
+	public function edit_public()
+	{
+		$this->load->model("Publication2Model");
+		$vdata = array(
+			"status_show" => $this->input->post("status_show"),
+		);
+		$where = array(
+			"userID =" . $this->input->post("user_id")
+		);
+		$this->Publication2Model->update($vdata, $where);
+	}
+
+	public function edit_skill()
+	{
+		$this->load->model("SkillModel");
+		$vdata = array(
+			"status_show" => $this->input->post("status_show"),
+		);
+		$where = array(
+			"userID =" . $this->input->post("user_id")
+		);
+		$this->SkillModel->update($vdata, $where);
+	}
+
+	public function edit_train()
+	{
+		$this->load->model("TrainingModel");
+		$vdata = array(
+			"status_show" => $this->input->post("status_show"),
+		);
+		$where = array(
+			"userID =" . $this->input->post("user_id")
+		);
+		$this->TrainingModel->update($vdata, $where);
+	}
+
 	public function edit_user2($vid)
 	{
 		$this->load->model("UserModel");
@@ -975,6 +1104,16 @@ class Main extends CI_Controller
 		} else {
 
 			$userID = $this->session->userdata("userID");
+			$this->load->model("UserModel");
+			$this->load->model("UserModel");
+			$this->load->model("UserModel");
+			$this->load->model("UserModel");
+			$this->load->model("UserModel");
+			$this->load->model("UserModel");
+			$this->load->model("UserModel");
+			$this->load->model("UserModel");
+			$this->load->model("UserModel");
+			$this->load->model("UserModel");
 			$this->load->model("UserModel");
 			$data["userID"] = $userID;
 			$data["info"] = $this->UserModel->getUserInfo($userID);
