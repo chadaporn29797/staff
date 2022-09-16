@@ -31,7 +31,17 @@
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                   <ul class="list-inline mb-0">
-
+                  <li class="mr-2" >เลือกปี</li>
+                    <div class='row'>
+                      <div class='col-lg-5'>
+                        <input class='form-control' type="number" id="vbegin" name="vbegin" min="2500" max="<?php echo date('Y') + 543; ?>" value="2559">
+                      </div>
+                      <div class='col-lg-2'> ถึง </div>
+                      <div class='col-lg-5'>
+                        <input class='form-control' type="number" id="vend" name="vend" min="2559" max="<?php echo date('Y') + 543 + 5; ?>" value="<?php echo date('Y') + 543; ?>">
+                      </div>
+                    </div>
+                    <br>
                     <?php
                     $no = 0;
                     foreach ($document as $row) {
@@ -41,13 +51,17 @@
                     if ($no == 0) {
                       echo '<li><button class="btn btn-success" data-toggle="modal" id="konha" data-target="#add-new-group">+ดึงข้อมูล</button></li>';
                     } else {
-                      echo '<li class="mr-2" >อัพเดตข้อมูลล่าสุดเมื่อ '. $document[0]->update .'</li>';
+                      echo '<li class="mr-2" >อัพเดตข้อมูลล่าสุดเมื่อ ' . $document[0]->update . '</li>';
                       echo '<li><button class="btn btn-info" data-toggle="modal" id="update" data-target="#add-new-group">+อัพเดตข้อมูล</button></li>';
                     }
                     ?>
                   </ul>
                 </div>
               </div>
+              <br>
+              <br>
+              <br>
+              <br>
 
 
               <div class="row">
@@ -124,7 +138,7 @@
     <script>
       $("#konha").click(function(e) {
         e.preventDefault();
-        var url = "http://localhost/document/index.php/api/finddocPerson/" + $("#namesh").val();
+        var url = "http://localhost/document/index.php/api/finddocPersonYear2/" + $("#namesh").val()+"/"+ $("#vbegin").val()+"/"+ $("#vend").val();
 
         $.get(url, function(data) {
           console.log(data);
@@ -154,7 +168,7 @@
 
       $("#update").click(function(e) {
         e.preventDefault();
-        var url = "http://www.sci.ubu.ac.th/command/index.php/api/finddocPerson/" + $("#namesh").val();
+        var url = "http://www.sci.ubu.ac.th/command/index.php/api/finddocPersonYear2/" + $("#namesh").val()+"/"+ $("#vbegin").val()+"/"+ $("#vend").val();
 
         $.post('<?= site_url('main/del_document') ?>', {
           "user_id": <?php echo $userID ?>,
