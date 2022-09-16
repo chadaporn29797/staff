@@ -115,7 +115,7 @@ $language = $row["language"];
 
             <div class="col text-start">
               <?php
-              $sql = "SELECT * FROM education WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $sql = "SELECT * FROM education WHERE userID=$userID  ORDER BY sortOrder ASC ";
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
                 echo "<h3 class='text-uppercase resume-section-heading mb-4'>" . $titles['education'][$language] . "</h3>";
@@ -140,18 +140,35 @@ $language = $row["language"];
 
 
 
-              <?php if (NULL != $overview &&  strlen($overview) > $MIN_STR_LENGTH) : ?>
+              <!-- <?php if (NULL != $overview &&  strlen($overview) > $MIN_STR_LENGTH) : ?>
                 <section class="work-section py-3">
                   <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['overview'][$language] ?></h3>
                   <div>
                     <?= $overview ?>
-                  </div><!-- //item -->
+                  </div>
                 </section>
-              <?php endif; ?>
-
+              <?php endif; ?> -->
 
               <?php
-              $sql = "SELECT * FROM award WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $sql = "SELECT * FROM user WHERE userID=$userID AND status_show=0  ";
+              $result = $conn->query($sql);
+              if ($result->num_rows > 0) {
+              ?>
+                <section class="work-section py-3">
+                  <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['overview'][$language] ?></h3>
+                  <div class="item-content">
+                    <?php while ($overview = $result->fetch_assoc()) : ?>
+                      
+                        <?= $overview["description"] ?> 
+                      
+                    <?php endwhile; ?>
+                  </div>
+                </section>
+              <?php } ?>
+
+              
+              <?php
+              $sql = "SELECT * FROM award WHERE userID=$userID AND status_show=0 ORDER BY sortOrder ASC ";
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
               ?>
@@ -168,7 +185,7 @@ $language = $row["language"];
               <?php } ?>
 
               <?php
-              $sql = "SELECT * FROM scholarship WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $sql = "SELECT * FROM scholarship WHERE userID=$userID AND status_show=0 ORDER BY sortOrder ASC ";
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
               ?>
@@ -186,7 +203,7 @@ $language = $row["language"];
 
 
               <?php
-              $sql = "SELECT * FROM work_exp WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $sql = "SELECT * FROM work_exp WHERE userID=$userID AND status_show=0 ORDER BY sortOrder ASC ";
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
               ?>
@@ -204,7 +221,7 @@ $language = $row["language"];
               <?php } ?>
 
               <?php
-              $sql = "SELECT * FROM publication WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $sql = "SELECT * FROM publication WHERE userID=$userID AND status_show=0 ORDER BY sortOrder ASC ";
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
               ?>
@@ -222,7 +239,7 @@ $language = $row["language"];
 
 
               <?php
-              $sql = "SELECT * FROM skill WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $sql = "SELECT * FROM skill WHERE userID=$userID AND status_show=0 ORDER BY sortOrder ASC ";
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
               ?>
@@ -240,7 +257,7 @@ $language = $row["language"];
 
 
               <?php
-              $sql = "SELECT * FROM training WHERE userID=$userID ORDER BY sortOrder ASC ";
+              $sql = "SELECT * FROM training WHERE userID=$userID AND status_show=0 ORDER BY sortOrder ASC ";
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
               ?>
@@ -257,9 +274,9 @@ $language = $row["language"];
               <?php } ?>
 
               <?php
-              $sql = "SELECT * FROM research_into WHERE user_id=$userID";
-              $sql2 = "SELECT * FROM research_into WHERE user_id=$userID and vstatus=0";
-              $sql3 = "SELECT * FROM research_into WHERE user_id=$userID and vstatus=1";
+              $sql = "SELECT * FROM research_into WHERE user_id=$userID AND status_show=0 ";
+              $sql2 = "SELECT * FROM research_into WHERE user_id=$userID and vstatus=0 AND status_show=0";
+              $sql3 = "SELECT * FROM research_into WHERE user_id=$userID and vstatus=1 AND status_show=0";
               $result = $conn->query($sql);
               $result2 = $conn->query($sql2);
               $result3 = $conn->query($sql3);
@@ -303,7 +320,7 @@ $language = $row["language"];
               ?>
 
               <?php
-              $sql = "SELECT * FROM publication_into WHERE user_id=$userID ";
+              $sql = "SELECT * FROM publication_into WHERE user_id=$userID  AND status_show=0";
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
               ?>
@@ -320,7 +337,7 @@ $language = $row["language"];
               <?php } ?>
 
               <?php
-              $sql = "SELECT * FROM document_into WHERE user_id=$userID ";
+              $sql = "SELECT * FROM document_into WHERE user_id=$userID AND status_show=0";
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
               ?>

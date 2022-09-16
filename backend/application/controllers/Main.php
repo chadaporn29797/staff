@@ -569,14 +569,14 @@ class Main extends CI_Controller
 	////////////////////ตอนที่ 1\\\\\\\\\\\\\\\\\\\\\\\\
 	public function edit_res()
 	{
-		$this->load->model("DocumentModel");
+		$this->load->model("UserModel");
 		$vdata = array(
 			"status_show" => $this->input->post("status_show"),
 		);
 		$where = array(
 			"userID =" . $this->input->post("user_id")
 		);
-		$this->DocumentModel->update($vdata, $where);
+		$this->UserModel->update($vdata, $where);
 	}
 
 	public function edit_award()
@@ -650,6 +650,7 @@ class Main extends CI_Controller
 		);
 		$this->TrainingModel->update($vdata, $where);
 	}
+
 
 	public function edit_user2($vid)
 	{
@@ -1105,18 +1106,33 @@ class Main extends CI_Controller
 
 			$userID = $this->session->userdata("userID");
 			$this->load->model("UserModel");
-			$this->load->model("UserModel");
-			$this->load->model("UserModel");
-			$this->load->model("UserModel");
-			$this->load->model("UserModel");
-			$this->load->model("UserModel");
-			$this->load->model("UserModel");
-			$this->load->model("UserModel");
-			$this->load->model("UserModel");
-			$this->load->model("UserModel");
-			$this->load->model("UserModel");
+			$this->load->model("DocumentModel");
+			$this->load->model("PublicationModel");
+			$this->load->model("ResearchModel");
+			$this->load->model("AwardModel");
+			$this->load->model("ScholarshipModel");
+			$this->load->model("WorkExpModel");
+			$this->load->model("Publication2Model");
+			$this->load->model("SkillModel");
+			$this->load->model("TrainingModel");
 			$data["userID"] = $userID;
 			$data["info"] = $this->UserModel->getUserInfo($userID);
+			$data['users'] = $this->UserModel->getQuery(array("userID=" . $userID));
+
+			$data['document'] = $this->DocumentModel->getQuery(array("user_id=" . $userID));
+			$data['publication'] = $this->PublicationModel->getQuery(array("user_id=" . $userID));
+			$data['research1'] = $this->ResearchModel->getQuery(array("user_id=" . $userID . " AND vstatus=0"));
+			$data['research2'] = $this->ResearchModel->getQuery(array("user_id=" . $userID . " AND vstatus=1"));
+
+			$data['award'] = $this->AwardModel->getQuery(array("userID=" . $userID));
+			$data['scholarship'] = $this->ScholarshipModel->getQuery(array("userID=" . $userID));
+			$data['workExp'] = $this->WorkExpModel->getQuery(array("userID=" . $userID));
+			$data['publication2'] = $this->Publication2Model->getQuery(array("userID=" . $userID));
+			$data['skill'] = $this->SkillModel->getQuery(array("userID=" . $userID));
+			$data['training'] = $this->TrainingModel->getQuery(array("userID=" . $userID));
+
+
+
 			$this->load->view('header', $data);
 			$this->load->view('print_option', $data);
 			$this->load->view('footer2');

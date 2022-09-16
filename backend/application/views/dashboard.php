@@ -441,7 +441,7 @@
               <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
                 <a class="btn btn-success" href="<?= site_url('main/edit_profile') ?>"> <i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
                 <span class="float-right">
-                  <a class="btn btn-dark" href="<?= site_url('main/print_option') ?>"> <i class="la la-print m-right-xs"></i>Print CV</a>
+                  <a class="btn btn-dark" href="<?= site_url('main/print_option') ?>"> <i class="la la-print m-right-xs"></i>จัดการ CV</a>
                 </span>
               </div>
             </div>
