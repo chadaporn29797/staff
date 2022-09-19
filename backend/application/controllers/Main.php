@@ -477,6 +477,29 @@ class Main extends CI_Controller
 		$this->DocumentModel->delete($vdata);
 	}
 
+	public function add_workload()
+	{
+		$this->load->model("AssessmentModel");
+
+		$vdata = array(
+			"info" => $this->input->post("info"),
+			"label" => $this->input->post("label"),
+			"year" => $this->input->post("year"),
+			"round" => $this->input->post("round"),
+			"user_id" => $this->input->post("user_id"),
+		);
+
+		$this->AssessmentModel->insert($vdata);
+	}
+
+	public function del_workload()
+	{
+		$this->load->model("AssessmentModel");
+
+		$vdata = array("user_id=" . $this->input->post("user_id"));
+		$this->AssessmentModel->delete($vdata);
+	}
+
 	public function add_user2()
 	{
 		$this->load->model("UserModel");
@@ -551,7 +574,7 @@ class Main extends CI_Controller
 			"status_show" => $this->input->post("status_show"),
 		);
 		$where = array(
-			"user_id =" . $this->input->post("user_id")." AND vstatus=0"
+			"user_id =" . $this->input->post("user_id") . " AND vstatus=0"
 		);
 		$this->ResearchModel->update($vdata, $where);
 	}
@@ -562,9 +585,20 @@ class Main extends CI_Controller
 			"status_show" => $this->input->post("status_show"),
 		);
 		$where = array(
-			"user_id =" . $this->input->post("user_id")." AND vstatus=1"
+			"user_id =" . $this->input->post("user_id") . " AND vstatus=1"
 		);
 		$this->ResearchModel->update($vdata, $where);
+	}
+	public function edit_workload()
+	{
+		$this->load->model("AssessmentModel");
+		$vdata = array(
+			"status_show" => $this->input->post("status_show"),
+		);
+		$where = array(
+			"user_id =" . $this->input->post("user_id")
+		);
+		$this->AssessmentModel->update($vdata, $where);
 	}
 	////////////////////ตอนที่ 1\\\\\\\\\\\\\\\\\\\\\\\\
 	public function edit_res()
@@ -1115,6 +1149,7 @@ class Main extends CI_Controller
 			$this->load->model("Publication2Model");
 			$this->load->model("SkillModel");
 			$this->load->model("TrainingModel");
+			$this->load->model("AssessmentModel");
 			$data["userID"] = $userID;
 			$data["info"] = $this->UserModel->getUserInfo($userID);
 			$data['users'] = $this->UserModel->getQuery(array("userID=" . $userID));
@@ -1123,6 +1158,7 @@ class Main extends CI_Controller
 			$data['publication'] = $this->PublicationModel->getQuery(array("user_id=" . $userID));
 			$data['research1'] = $this->ResearchModel->getQuery(array("user_id=" . $userID . " AND vstatus=0"));
 			$data['research2'] = $this->ResearchModel->getQuery(array("user_id=" . $userID . " AND vstatus=1"));
+			$data['workload'] = $this->AssessmentModel->getQuery(array("user_id=" . $userID));
 
 			$data['award'] = $this->AwardModel->getQuery(array("userID=" . $userID));
 			$data['scholarship'] = $this->ScholarshipModel->getQuery(array("userID=" . $userID));
@@ -1273,9 +1309,15 @@ class Main extends CI_Controller
 
 			$userID = $this->session->userdata("userID");
 			$this->load->model("UserModel");
+			$this->load->model("AssessmentModel");
+
+
 			$data["userID"] = $userID;
 			$data["info"] = $this->UserModel->getUserInfo($userID);
 			$data["users"] = $this->UserModel->getQuery();
+			$data["workload"] = $this->AssessmentModel->getQuery(array("user_id =" . $userID));
+			$data["workloads"] = $this->AssessmentModel->getQuery2(array("user_id =" . $userID));
+
 			$this->load->view('header', $data);
 			$this->load->view('workload', $data);
 			$this->load->view('footer');

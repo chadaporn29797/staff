@@ -253,15 +253,15 @@
                   </div>
                   <div class="form-group col-md-4">
                     <div class="form-check form-switch">
-                      <?php if ($document == NULL) { ?>
-                        <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="sk" disabled>
+                      <?php if ($workload == NULL) { ?>
+                        <input class="icheckbox_flat-green dd" type="checkbox" id="workload" name="cb" value="sk" disabled>
                         <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/workload') ?>">ภาระงาน**</a></label>
                       <?php  } else { ?>
-                        <?php if ($document[0]->status_show == 0) { ?>
-                          <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="sk" checked>
+                        <?php if ($workload[0]->status_show == 0) { ?>
+                          <input class="icheckbox_flat-green dd" type="checkbox" id="workload" name="cb" value="sk" checked>
                           <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/workload') ?>">ภาระงาน</a></label>
-                        <?php } else if ($document[0]->status_show == 1) { ?>
-                          <input class="icheckbox_flat-green dd" type="checkbox" id="toggle" name="cb" value="sk">
+                        <?php } else if ($workload[0]->status_show == 1) { ?>
+                          <input class="icheckbox_flat-green dd" type="checkbox" id="workload" name="cb" value="sk">
                           <label class="form-check-label" for="flexSwitchCheckDefault"><a href="<?= site_url('main/workload') ?>">ภาระงาน</a></label>
                         <?php } ?>
                       <?php } ?>
@@ -449,6 +449,22 @@
           $.post('<?= site_url('main/edit_doc') ?>', {
             "user_id": <?php echo $userID ?>,
             "status_show": doc,
+          }, function(data) {
+            if (data.success == true) {}
+          }, "json");
+
+          
+
+          ////////////ภาระงาน
+          var workload;
+          if (document.getElementById("workload").checked == true) {
+            workload = 0;
+          } else if (document.getElementById("workload").checked == false) {
+            workload = 1;
+          }
+          $.post('<?= site_url('main/edit_workload') ?>', {
+            "user_id": <?php echo $userID ?>,
+            "status_show": workload,
           }, function(data) {
             if (data.success == true) {}
           }, "json");

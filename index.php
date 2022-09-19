@@ -353,6 +353,23 @@ $language = $row["language"];
                 </section>
               <?php } ?>
 
+              <?php
+              $sql = "SELECT * FROM assessment WHERE user_id=$userID AND status_show=0";
+              $result = $conn->query($sql);
+              if ($result->num_rows > 0) {
+              ?>
+                <section class="work-section py-3">
+                  <h3 class="text-uppercase resume-section-heading mb-4"></i><?= $titles['assessment'][$language] ?></h3>
+                  <div class="item-content">
+                    <?php while ($assessment = $result->fetch_assoc()) : ?>
+                      <ul>
+                      <li><?= $assessment["info"] ?>-<?= $assessment["label"] ?> (<?= $assessment["round"] ?>/<?= $assessment["year"] ?>)</li>
+                      </ul>
+                    <?php endwhile; ?>
+                  </div>
+                </section>
+              <?php } ?>
+
 
 
 
