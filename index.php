@@ -89,7 +89,6 @@ $language = $row["language"];
               <h2 class="resume-name mb-0 text-uppercase"><?= $row["nameENG"] . " " . $row["sirNameENG"] ?></h2>
               <div class="resume-tagline mb-3 mb-md-0"><?= $row["fullName"] ?></div>
             </div>
-            <!--//resume-title-->
             <div class="resume-contact col-12 col-md-6 col-lg-4 col-xl-3">
               <ul class="list-unstyled mb-0">
                 <li class="mb-2"><i class="fas fa-globe fa-fw fa-lg me-2"></i>Department : <?= $row["departmentName"] ?>
@@ -100,12 +99,9 @@ $language = $row["language"];
                 <li class="mb-2"><i class="fas fa-envelope-square fa-fw fa-lg me-2"></i>E-mail : <?= $row["email"] ?></li>
               </ul>
             </div>
-            <!--//resume-contact-->
           </div>
-          <!--//row-->
 
         </div>
-        <!--//resume-header-->
         <hr>
         <div class="resume-intro py-3">
           <div class="row align-items-center">
@@ -233,7 +229,7 @@ $language = $row["language"];
                         <li><?= $publication["detail"] ?> </li>
                       </ol>
                     <?php endwhile; ?>
-                  </div><!-- //publication-->
+                  </div>
                 </section>
               <?php } ?>
 
@@ -332,7 +328,7 @@ $language = $row["language"];
                       <li><?= $publication["title"] ?> (<?= $publication["journal_year"] ?>)</li>
                       </ul>
                     <?php endwhile; ?>
-                  </div><!-- //publication-->
+                  </div>
                 </section>
               <?php } ?>
 
@@ -373,25 +369,20 @@ $language = $row["language"];
 
 
 
-              <!--//resume-main-->
+            
 
             </div>
-            <!--//row-->
           </div>
-          <!--//resume-body-->
           <hr>
           <div class="d-print-none" data-aos="fade-left" data-aos-delay="200">
             <a class="btn btn-light text-dark shadow-sm mt-1 me-1" onclick='window.print()' target="_blank">Print this CV</a>
           </div>
-          <!--//resume-footer-->
       </article>
 
     </div>
-    <!--//container-->
 
 
   </div>
-  <!--//main-wrapper-->
 
 
 </body>

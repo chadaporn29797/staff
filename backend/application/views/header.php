@@ -143,8 +143,8 @@
                 </li>
                 <li class=" nav-item"><a href="<?= site_url('main/edit_picture') ?>"><i class="la la-image"></i><span class="menu-title" data-i18n="">แก้ไขรูปภาพ</span></a>
                 </li>
-                <li class=" nav-item"><a href="<?= site_url('main/groups') ?>"><i class="la la-group"></i><span class="menu-title" data-i18n="">กลุ่มวิจัย</span></a>
-                </li>
+                <!-- <li class=" nav-item"><a href="<?= site_url('main/groups') ?>"><i class="la la-group"></i><span class="menu-title" data-i18n="">กลุ่มวิจัย</span></a>
+                </li> -->
                 <li class=" nav-item"><a href="<?= site_url('main/research') ?>"><i class="la la-book"></i><span class="menu-title" data-i18n="">งานวิจัย</span></a>
                 </li>
                 <li class=" nav-item"><a href="<?= site_url('main/workload') ?>"><i class="la la-archive"></i><span class="menu-title" data-i18n="">ภาระงาน</span></a>
